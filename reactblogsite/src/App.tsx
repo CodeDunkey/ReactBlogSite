@@ -1,10 +1,15 @@
 import React from 'react';
-import './App.css';
-
+import './App.scss';
+import { HeaderWrapper } from './Site/Header/HeaderWrapper';
+import { MainWrapper } from './Site/Main/MainWrapper';
 function App() {
   return (
-    <div>
-      
+    <div className='App'>
+      <div className='siteWrapper'>
+        <HeaderWrapper />
+        <MainWrapper />
+        
+      </div>
     </div>
   );
 }

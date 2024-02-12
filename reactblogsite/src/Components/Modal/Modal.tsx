@@ -17,7 +17,7 @@ const toggleModal = () =>{
 console.log('modal', modal);
 return(
 <div>
-    <button onClick={toggleModal}>Open</button>
+    
     {modal && (<div className="modal">
         <div className="overlay"></div>
         <div className="modal-content">
@@ -27,7 +27,7 @@ return(
                 blanditiis ut dolorem quas illo, sint saepe minus odit. 
                 Pariatur rem saepe obcaecati deleniti delectus?
             </p>
-        <button className='close-modal' onClick={toggleModal}>Close</button>
+        
         </div>
     </div>)}
     

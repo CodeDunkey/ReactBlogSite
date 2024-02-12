@@ -1,0 +1,39 @@
+.modal{
+    // background-color: aqua;
+    // height: 100vh;
+    // width: 100vw;
+    // position: fixed;
+   
+    body.active-modal{
+        overflow-y: hidden;
+    }
+    .overlay{
+         height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    background-color: darkgrey;
+    opacity: 0.7;
+    }
+    
+    .modal-content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: aliceblue;
+        padding: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color:darkblue;
+    }
+
+    .close-modal{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+    }
+}

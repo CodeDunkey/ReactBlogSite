@@ -1,5 +1,18 @@
 .headerMenu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
     height: 100%;
     width: 400px;
-    border: 1px solid black;
+    // border: 1px solid black;
+    // padding: 5px;
+
+    .signUp{
+        margin: 2.5px;
+    }
+    .signIn{
+        margin: 2.5px;
+
+    }
 }

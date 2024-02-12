@@ -1,7 +1,7 @@
 import './Modal.scss'
 import { useState } from "react"
 
-export const Modal = () => {
+export const ModalExample = () => {
 
 const [modal, setModal] = useState(false)
  

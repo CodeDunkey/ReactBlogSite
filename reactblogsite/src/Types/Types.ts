@@ -11,6 +11,8 @@ export interface Post {
 export interface User {
     userId: number,
     createdDateTime: string
+    email: string,
+    password: string,
     firstName: string,
     lastName: string,
     userName: string,

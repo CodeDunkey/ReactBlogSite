@@ -64,14 +64,12 @@ export const ModalSignIn = () => {
     console.log('userName in Modal', userName);
     return (
         <div>
-            <button className="signUp" onClick={toggleSignUp}>Sign up</button>
+            {/* <button className="signUp" onClick={toggleSignUp}>Sign up</button> */}
             <Button buttonType={Type.SINGIN} text="Sign in" onClick={toggleSignIn}/>
             
             <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={singIn} >
                 <button onClick={toggleSignIn}>X</button>
-
                 <input onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name & email'></input>
-                {inputUser.current}{keyDown}
                 <input value={password} onChange={textInputPassword} placeholder='Password'></input>
                 {password}
             </ReactModal>

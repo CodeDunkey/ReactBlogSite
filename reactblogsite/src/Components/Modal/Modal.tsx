@@ -1,45 +1,51 @@
 import ReactModal from "react-modal";
 import './Modal.scss'
 import { useRef, useState } from "react"
-import { useUserName, useSetUserName } from "../../Hooks/useContext/SignInContextCreateProvider";
+import { useLogIn } from "../../Hooks/useLogIn";
 import { Button, Type } from "../Button/Button";
 
 export const ModalSignIn = () => {
-
-    const [singIn, setSignIn] = useState(false)
+    const [logIn, setLogIn] = useState(false)
     const [singUp, setSignUp] = useState(false)
-    // const [userNameMail, setUserNameMail] = useState()
-    const [password, setPassword] = useState<string>()
+    
     const [keyDown, setKeyDown] = useState()
-    let inputUser = useRef<any>("")
-    const inputPassword = useRef<string>()
+    let inputUser = useRef<string>("")
+    let inputPassword = useRef<string>("")
+    const {isUserValidated, setIsUserValidated, validateUserAndPassword } = useLogIn();
 
-   const userName = useUserName()
-   const setUserName = useSetUserName()
+   
 
     const keyPress = (event: any) => {
         setKeyDown(event.key)
-
     }
     if (keyDown === 'Enter') {
-        console.log('enter pressed');
-
-        setUserName(inputUser.current)
-
+        // setUserName(inputUser.current)
+        // setPassword(inputPassword.current)
+        if(inputUser.current !== "" && inputPassword.current !== ""){
+            validateUserAndPassword({userName: inputUser.current, password: inputPassword.current});
+            inputUser.current = "";
+            inputPassword.current = "";
+        }
     }
+    
     const textInputUser = (x: any) => {
         inputUser.current = x.target.value;
     }
     const textInputPassword = (x: any) => {
-        setPassword(x.target.value)
+        inputPassword.current = x.target.value
     }
 
-    const toggleSignIn = () => {
-        setSignIn(!singIn)
+    const toggleLogIn = () => {
+        setLogIn(!logIn)
+    }
+    const toggleLogOut = () => {
+        setIsUserValidated(false)
+        setLogIn(!logIn)
     }
     const toggleSignUp = () => {
         setSignUp(!singUp)
     }
+
     const reactModalStyles: any = {
         overlay: {
             backgroundColor: "rgba(150, 150, 150, 0.5)"
@@ -59,19 +65,16 @@ export const ModalSignIn = () => {
             padding: '40px'
         }
     }
-
-    console.log('inputUser', inputUser);
-    console.log('userName in Modal', userName);
+   
     return (
         <div>
             {/* <button className="signUp" onClick={toggleSignUp}>Sign up</button> */}
-            <Button buttonType={Type.SINGIN} text="Sign in" onClick={toggleSignIn}/>
-            
-            <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={singIn} >
-                <button onClick={toggleSignIn}>X</button>
+            {!isUserValidated && <Button buttonType={Type.LOGIN} text="Log in" onClick={toggleLogIn}/>}
+            {isUserValidated && <Button buttonType={Type.LOGIN} text="Log out" onClick={toggleLogOut}/>}
+            <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={logIn && !isUserValidated} >
+                <button onClick={toggleLogIn}>X</button>
                 <input onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name & email'></input>
-                <input value={password} onChange={textInputPassword} placeholder='Password'></input>
-                {password}
+                <input onChange={textInputPassword} onKeyDown={keyPress} placeholder='Password'></input>
             </ReactModal>
         </div>
     )

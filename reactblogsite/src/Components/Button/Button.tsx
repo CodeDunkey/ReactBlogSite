@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import './Button.scss'
 export enum Type {
-    SINGIN = "signIn",
+    LOGIN = "logIn",
     RED = "red",
     SEARCH = "search"
 }

@@ -10,7 +10,9 @@ class ServerAPI {
         console.log('username and password on server', userName, password);
         // const [userVerified, setUserVerified] = useState<boolean>(false)
 
-        const verification = Users.map((user)=>{
+
+        // klovn. det skal være .find !!!!
+        const verificationOfUser = Users.map((user)=>{
             if(userName === user.userName && password === user.password){
                 // setUserVerified(true)
                 setUserName(userName)
@@ -20,6 +22,7 @@ class ServerAPI {
             else{
                 setUserName("")
                 setIsUserValidated(false)
+                alert("no no no");
             }
             
         })

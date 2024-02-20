@@ -27,6 +27,8 @@ export let Users: User[] = [
         createdDateTime: new Date().toLocaleString(),
         firstName: "Bob",
         lastName: "Bobson",
+        post: [
+            {post: "My first post", userId: 1, DateTimeStamp: new Date().toLocaleString()}
+        ],
     },
-   
 ]

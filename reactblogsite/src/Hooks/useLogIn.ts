@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react"
+import { useContext } from "react"
 import { LogInContext } from "./Context/LogInContextCreateProvider"
 import { clientApi } from "../Utilities/ClientAPI";
 export const useLogIn = () => { 
@@ -8,7 +8,7 @@ export const useLogIn = () => {
     const validateUserAndPassword = ({userName, password}: any)=>{ // skal types med username og password
         
         let userAndPassword = clientApi.validateUserAndPassword({userName, password, setUserName: logInContext.setUserName, setIsUserValidated: logInContext.setIsUserValidated})
-        console.log("userAndPassword in useLogIn", userAndPassword)
+        // console.log("userAndPassword in useLogIn", userAndPassword)
     }
     return {
         

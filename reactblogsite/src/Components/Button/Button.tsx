@@ -1,9 +1,11 @@
 import classNames from 'classnames';
 import './Button.scss'
+
 export enum Type {
     LOGIN = "logIn",
     RED = "red",
-    SEARCH = "search"
+    BLOG = "blog",
+    EXIT = "exit"
 }
 export interface ButtonProps {
     onClick: () => void;

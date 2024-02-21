@@ -3,32 +3,53 @@ import { User } from "../../../Types/Types"
 export let Users: User[] = [
     {
         userId: Math.random(),
-        userName: "John123",
+        userName: "jj",
         createdDateTime: new Date().toLocaleString(),
-        email: "john@joohn.com",
-        password: "John123",
+        email: "john@john.com",
+        password: "jj",
         firstName: "John",
         lastName: "Johnson",
+        post: [
+            {
+                headLine: "First post from Johns world",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
+                userId: 1,
+                DateTimeStamp: new Date().toLocaleString()
+            }
+        ],
     },
     {
         userId: Math.random(),
-        userName: "Elsa123",
+        userName: "ee",
         email: "elsa@elsa.com",
-        password: "Elsa123",
+        password: "ee",
         createdDateTime: new Date().toLocaleString(),
         firstName: "Elsa",
         lastName: "Elsason",
+        post: [
+            {
+                headLine: "First post from Elsas world",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
+                userId: 1,
+                DateTimeStamp: new Date().toLocaleString()
+            }
+        ],
     },
     {
         userId: Math.random(),
-        userName: "Bob123",
+        userName: "ww",
         email: "bob@bob.com",
-        password: "Bob123",
+        password: "ww",
         createdDateTime: new Date().toLocaleString(),
         firstName: "Bob",
         lastName: "Bobson",
         post: [
-            {post: "My first post", userId: 1, DateTimeStamp: new Date().toLocaleString()}
+            {
+                headLine: "First post from Bobs world",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
+                userId: 1,
+                DateTimeStamp: new Date().toLocaleString()
+            }
         ],
     },
 ]

@@ -4,7 +4,8 @@ export interface Comment {
     DateTimeStamp: string
 }
 export interface Post {
-    post: string,
+    headLine: string,
+    text: string,
     userId: number,
     DateTimeStamp: string
 }

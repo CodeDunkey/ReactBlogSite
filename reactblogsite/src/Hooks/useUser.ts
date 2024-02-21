@@ -1,20 +1,26 @@
-import { useEffect, useState } from "react";
-import { useLogIn } from "./useLogIn";
+import { useContext } from "react"
+import { UserContext } from "./Context/UserContextCreateProvider"
 import { clientApi } from "../Utilities/ClientAPI";
-export const useUser = () => {
-    const [user, setUser] = useState();
-    const { userName } = useLogIn();
-
-    // console.log("userName in useUser: ", userName);
-    // useEffect(() => {
-    //     // console.log("userName in useUser-useEffect: ", userName);
-
-    //     const getUser: any = clientApi.getUser({userName})
-    //     console.log("getUser", )
-    //     setUser(user)
-    // }, [userName])
-    // console.log("user in useUser", user)
-    return {
-        user
+export const useUser = () => { 
+    
+    const userContext = useContext(UserContext);
+    
+    const validateUserAndPassword = ({userName, password}: any)=>{ // skal types med username og password
+        
+        let user = clientApi.validateUserAndPassword(userName, password)
+        console.log("userAndPassword in useLogIn", user)
+        if(user !== undefined){
+            userContext.setUser(user)
+            userContext.setIsUserValidated(true)
+        }
     }
+    return {
+        
+        user: userContext.user,
+        setUser: userContext.setUser,
+        isUserValidated: userContext.isUserValidated,
+        setIsUserValidated: userContext.setIsUserValidated,
+        validateUserAndPassword,
+    }
+
 }

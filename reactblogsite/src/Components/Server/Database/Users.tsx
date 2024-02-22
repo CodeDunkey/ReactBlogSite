@@ -15,6 +15,12 @@ export let Users: User[] = [
                 text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
                 userId: 1,
                 DateTimeStamp: new Date().toLocaleString()
+            },
+            {
+                headLine: "Second post from Johns world",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
+                userId: 1,
+                DateTimeStamp: new Date().toLocaleString()
             }
         ],
     },
@@ -32,7 +38,13 @@ export let Users: User[] = [
                 text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
                 userId: 1,
                 DateTimeStamp: new Date().toLocaleString()
-            }
+            },
+            {
+                headLine: "Second post from Elsas world",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
+                userId: 1,
+                DateTimeStamp: new Date().toLocaleString()
+            },
         ],
     },
     {
@@ -49,7 +61,22 @@ export let Users: User[] = [
                 text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
                 userId: 1,
                 DateTimeStamp: new Date().toLocaleString()
-            }
+            },
+            {
+                headLine: "Second post from Bobs world",
+                text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
+                userId: 1,
+                DateTimeStamp: new Date().toLocaleString()
+            },
         ],
+    },
+    {
+        userId: Math.random(),
+        userName: "no",
+        email: "no@no.com",
+        password: "no",
+        createdDateTime: new Date().toLocaleString(),
+        firstName: "no",
+        lastName: "nono",
     },
 ]

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { clientApi } from "../Utilities/ClientAPI";
 import { Post } from "../Types/Types";
 export const useViewBloggersContent = () => {
-    const [posts, setPosts] = useState<any>();
+    const [posts, setPosts] = useState<Post[]>([]);
     
     //     const userPosts = clientApi.getPosts();
     //     // const show = userPosts.map((e)=> e.headLine)
@@ -11,7 +11,7 @@ export const useViewBloggersContent = () => {
     // //     setPosts(users)
     // // }
     // // getPosts();
-    // console.log("userPosts in use", userPosts)
+    console.log("userPosts in use", posts)
     // console.log("show in use", show)
     useEffect(()=>{
         const getPosts = () => {

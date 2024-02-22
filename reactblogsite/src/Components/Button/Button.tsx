@@ -3,6 +3,7 @@ import './Button.scss'
 
 export enum Type {
     LOGIN = "logIn",
+    SIGNUP = "signUp",
     RED = "red",
     BLOG = "blog",
     EXIT = "exit"

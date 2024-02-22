@@ -26,12 +26,35 @@
     // border-radius: 1px;
     // border: 0;
     
+    // padding: 2.5px;
     margin: 2.5px;
     border: 0;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 1px black; 
 }
 .button__logIn:hover {
+    // border: 5px solid blue;
+    box-shadow: 0px 0px 4px 1px rgb(79, 79, 79); 
+    // background: #d3cbff;
+}
+.button__signUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    background-image: linear-gradient(180deg, #b0c0c8, #0f212c);
+    // width: 100%;
+    // height: 40px;
+    // border-radius: 1px;
+    // border: 0;
+    
+    margin: 2.5px;
+    border: 0;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 1px black; 
+}
+.button__signUp:hover {
     // border: 5px solid blue;
     box-shadow: 0px 0px 4px 1px rgb(79, 79, 79); 
     // background: #d3cbff;

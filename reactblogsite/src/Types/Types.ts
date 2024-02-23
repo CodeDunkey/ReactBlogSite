@@ -21,3 +21,19 @@ export interface User {
     post?: Post[],
     comments?: Comment[],
 }
+// export interface User {
+//     userId: number,
+//     createdDateTime: string
+//     email: string,
+//     password: string,
+//     firstName: string,
+//     lastName: string,
+//     userName: string,
+//     blog?: string,
+//     comments?: Comment[],
+// }
+
+interface Blog {
+    blogTitle: string,
+    post?: Post[],
+}

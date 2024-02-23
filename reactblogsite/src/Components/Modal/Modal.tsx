@@ -1,6 +1,6 @@
 import ReactModal from "react-modal";
 import './Modal.scss'
-import { useRef, useState } from "react"
+import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
 import { useUser } from "../../Hooks/useUser";
 import { useAddNewUser } from "../../Hooks/useAddNewUser";
 import { Button, Type } from "../Button/Button";
@@ -9,18 +9,19 @@ export const ModalSignIn = () => {
     const [logIn, setLogIn] = useState(false)
     const [singUp, setSignUp] = useState(false)
 
-    const [keyDown, setKeyDown] = useState()
+    const [keyDown, setKeyDown] = useState("")
     let inputUser = useRef<string>("")
     let inputPassword = useRef<string>("")
     let inputEmail = useRef<string>("")
     let inputFirstName = useRef<string>("")
     let inputLastName = useRef<string>("")
 
-    const { isUserValidated, setIsUserValidated, setUser, validateUserAndPassword } = useUser();
+    const { user, setUser, validateUserAndPassword } = useUser();
+    // isUserValidated, setIsUserValidated, 
     const { addUser } = useAddNewUser();
 
 
-    const keyPress = (event: any) => {
+    const keyPress = (event: KeyboardEvent<HTMLInputElement>) => {
         setKeyDown(event.key)
     }
     if (logIn && keyDown === 'Enter') {
@@ -58,19 +59,19 @@ export const ModalSignIn = () => {
         setSignUp(!singUp)
     }
 
-    const textInputUser = (x: any) => {
+    const textInputUser = (x: ChangeEvent<HTMLInputElement>) => {
         inputUser.current = x.target.value;
     }
-    const textInputPassword = (x: any) => {
+    const textInputPassword = (x: ChangeEvent<HTMLInputElement>) => {
         inputPassword.current = x.target.value
     }
-    const textinputEmail = (x: any) => {
+    const textinputEmail = (x: ChangeEvent<HTMLInputElement>) => {
         inputEmail.current = x.target.value;
     }
-    const textinputFirstName = (x: any) => {
+    const textinputFirstName = (x: ChangeEvent<HTMLInputElement>) => {
         inputFirstName.current = x.target.value
     }
-    const textinputLastName = (x: any) => {
+    const textinputLastName = (x: ChangeEvent<HTMLInputElement>) => {
         inputLastName.current = x.target.value;
     }
 
@@ -87,47 +88,55 @@ export const ModalSignIn = () => {
             firstName: "",
             lastName: "",
         })
-        setIsUserValidated(false)
+        // setIsUserValidated(false)
         setLogIn(!logIn)
     }
     const toggleSignUp = () => {
         setSignUp(!singUp)
     }
 
-    const reactModalStyles: any = {
+    const reactModalStyles = {
         overlay: {
             backgroundColor: "rgba(150, 150, 150, 0.75)"
         },
-        content: {
-            position: 'absolute',
-            top: '100px',
-            left: '500px',
-            right: '500px',
-            bottom: '200px',
-            border: '1px solid #ccc',
-            background: '#fff',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
-            outline: 'none',
-            padding: '40px'
-
-        }
+        
     }
-    // youtube
-    // Login and Registration Form using React + Node + MySQL | Login and Sign Up Form with Validation
+    const modalContentStyles: React.CSSProperties = {
+        position: 'absolute',
+        top: '100px',
+        left: '500px',
+        right: '500px',
+        bottom: '200px',
+        border: '1px solid #ccc',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '40px',
+    }
+
     return (
         <div className="modalWrapper">
 
             {!logIn && <Button buttonType={Type.SIGNUP} text="Sign up" onClick={toggleSignUp}></Button>}
-            {!isUserValidated && <Button buttonType={Type.LOGIN} text="Log in" onClick={toggleLogIn} />}
-            {isUserValidated && <Button buttonType={Type.LOGIN} text="Log out" onClick={toggleLogOut} />}
-            <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={logIn && !isUserValidated} >
+            {
+                !user
+            // !isUserValidated 
+            && <Button buttonType={Type.LOGIN} text="Log in" onClick={toggleLogIn} />}
+            {
+                user
+            // isUserValidated 
+            && <Button buttonType={Type.LOGIN} text="Log out" onClick={toggleLogOut} />}
+            <ReactModal style={{ overlay: reactModalStyles.overlay, content: modalContentStyles }} isOpen={logIn && 
+                !user
+                // !isUserValidated
+                } >
                 <input onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name'></input>
                 <input onChange={textInputPassword} onKeyDown={keyPress} placeholder='Password'></input>
                 <Button buttonType={Type.EXIT} text="X" onClick={toggleLogIn}></Button>
             </ReactModal>
-            <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={singUp} >
+            <ReactModal style={{ overlay: reactModalStyles.overlay, content: modalContentStyles }} isOpen={singUp} >
                 <label htmlFor="user name" >User name</label>
                 <input id="user name" onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name'></input>
                 <br></br>

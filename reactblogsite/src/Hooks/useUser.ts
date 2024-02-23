@@ -11,15 +11,15 @@ export const useUser = () => {
         console.log("userAndPassword in useLogIn", user)
         if(user !== undefined){
             userContext.setUser(user)
-            userContext.setIsUserValidated(true)
+            // userContext.setIsUserValidated(true)
         }
     }
     return {
         
         user: userContext.user,
         setUser: userContext.setUser,
-        isUserValidated: userContext.isUserValidated,
-        setIsUserValidated: userContext.setIsUserValidated,
+        // isUserValidated: userContext.isUserValidated,
+        // setIsUserValidated: userContext.setIsUserValidated,
         validateUserAndPassword,
     }
 

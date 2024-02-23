@@ -29,11 +29,13 @@ class ServerAPI {
     }
 
     getPosts = () => {
-
+        
         const userPosts = Users.flatMap((user) => {
             return user.post || []
         })
         return userPosts
+
+        
     }
     // getPosts = () => {
 

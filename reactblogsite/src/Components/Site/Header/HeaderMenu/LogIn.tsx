@@ -2,11 +2,11 @@ import ReactModal from "react-modal";
 import { useUser } from "../../../../Hooks/useUser";
 import { useLogInSignUp } from "../../../../Hooks/useLogInSignUp";
 import { Button, Type } from "../../../Button/Button"
-import { Dispatch, SetStateAction } from "react";
+import { ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
 export const LogIn = () => {
     
-    const {logIn, setLogIn} = useLogInSignUp()
     const { user, setUser, validateUserAndPassword } = useUser();
+    const {logIn, setLogIn, setKeyDown, inputUser, inputPassword } = useLogInSignUp()
     // isUserValidated, setIsUserValidated, 
 
 
@@ -27,7 +27,16 @@ export const LogIn = () => {
         // setIsUserValidated(false)
         setLogIn(!logIn)
     }
-    
+    const keyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        setKeyDown(event.key)
+    }
+    const textInputUser = (x: ChangeEvent<HTMLInputElement>) => {
+        inputUser.current = x.target.value;
+    }
+    const textInputPassword = (x: ChangeEvent<HTMLInputElement>) => {
+        inputPassword.current = x.target.value
+    }
+
     const reactModalStyles = {
         overlay: {
             backgroundColor: "rgba(150, 150, 150, 0.75)"
@@ -53,8 +62,8 @@ export const LogIn = () => {
             {!user && <Button buttonType={Type.LOGIN} text="Log in" onClick={toggleLogIn} />}
             {user && <Button buttonType={Type.LOGIN} text="Log out" onClick={toggleLogOut} />}
             <ReactModal style={{ overlay: reactModalStyles.overlay, content: modalContentStyles }} isOpen={logIn && !user} >
-                {/* <input onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name'></input> */}
-                {/* <input onChange={textInputPassword} onKeyDown={keyPress} placeholder='Password'></input> */}
+                <input onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name'></input>
+                <input onChange={textInputPassword} onKeyDown={keyPress} placeholder='Password'></input>
                 <Button buttonType={Type.EXIT} text="X" onClick={toggleLogIn}></Button>
             </ReactModal>
         </div>

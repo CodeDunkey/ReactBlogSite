@@ -9,7 +9,9 @@ export const useLogInSignUp = () => {
         
         logIn: logInSignUpContext.logIn,
         setLogIn: logInSignUpContext.setLogIn,
-        
+        setKeyDown: logInSignUpContext.setKeyDown,
+        inputUser: logInSignUpContext.inputUser,
+        inputPassword: logInSignUpContext.inputPassword,
     }
 
 }

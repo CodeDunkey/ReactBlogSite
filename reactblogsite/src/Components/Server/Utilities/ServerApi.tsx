@@ -4,9 +4,11 @@ import { Users } from "../Database/Users"
 
 class ServerAPI {
     addUser = (userName: string, password: string, email: string, firstName: string, lastName: string) => {
+        let userCount = Users.length;
         console.log("is adding user")
+        console.log("userCount",userCount)
         const newUser: User = {
-            userId: Math.random(),
+            userId: userCount + 1,
             userName: userName,
             createdDateTime: new Date().toLocaleString(),
             password: password,

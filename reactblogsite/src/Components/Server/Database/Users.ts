@@ -2,7 +2,7 @@ import { User } from "../../../Types/Types"
 
 export let Users: User[] = [
     {
-        userId: Math.random(),
+        userId: 1,
         userName: "jj",
         createdDateTime: new Date().toLocaleString(),
         email: "john@john.com",
@@ -33,7 +33,7 @@ export let Users: User[] = [
         ],
     },
     {
-        userId: Math.random(),
+        userId: 2,
         userName: "ee",
         email: "elsa@elsa.com",
         password: "ee",
@@ -64,7 +64,7 @@ export let Users: User[] = [
         ],
     },
     {
-        userId: Math.random(),
+        userId: 3,
         userName: "ww",
         email: "bob@bob.com",
         password: "ww",
@@ -91,11 +91,15 @@ export let Users: User[] = [
                         dateTimeStamp: new Date().toLocaleString()
                     },
                 ],
-            }
+            },
+            {
+                userName: "ww",
+                blogTitle: "My second blog",
+            },
         ],
     },
     {
-        userId: Math.random(),
+        userId: 4,
         userName: "no",
         email: "no@no.com",
         password: "no",
@@ -105,7 +109,7 @@ export let Users: User[] = [
         blog: [
             {
                 userName: "no",
-                blogTitle: "My hobbies",
+                blogTitle: "My sport",
                 post: [
                     {
                         userName: "no",

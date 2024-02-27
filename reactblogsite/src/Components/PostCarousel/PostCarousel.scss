@@ -12,3 +12,107 @@
         box-shadow: 0px 0px 20px 1px black, inset 0px 0px 10px 1px black;
     }
 }
+
+.mainPictureSlideContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    // border: 2px solid blue;
+    position: relative;
+    .mySlides {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // border: 2px solid purple;
+        left: 50%;
+        .imageWrapper {
+            display: flex;
+            flex-direction: row;
+            width: 2280px;
+            // opacity: 1;
+            // border: 2px solid orange;
+            .image {
+                height: 468px;
+                width: 1140px;
+
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                .currentPicture {
+                    animation: currentPicture infinite 3000ms ease;
+                }
+                
+
+            }
+            @keyframes currentPicture {
+                // 0% {
+                //     transform: translateX(1140px);
+                // }
+
+                // 20% {
+                //     transform: translateX(0px);
+                // }
+
+                80% {
+                    transform: translateX(0px);
+                }
+
+                100% {
+                    transform: translateX(-1140px);
+                }
+            }
+           
+
+            @media (prefers-reduced-motion: no-preference) {
+                .nextPicture {
+                    animation: nextPicture infinite 3000ms ease;
+                }
+            }
+            @keyframes nextPicture {
+                
+                0% {
+                    transform: translateX(1140px);
+                }
+
+                20% {
+                    transform: translateX(0px);
+                }
+                80% {
+                    transform: translateX(0px);
+                }
+
+                100% {
+                    transform: translateX(-1140px);
+                }
+            }
+        }
+    }
+    .sliderDotWrapper {
+        position: absolute;
+        bottom: 2%;
+        left: 41.5%;
+        display: flex;
+        
+        .sliderDot {
+            cursor: pointer;
+            // border: 2px solid yellow;
+            height: 10px;
+            width: 10px;
+            margin: 10px;
+            background-color: #444;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .active{
+            background-color: #d20000;
+
+        }
+
+        .sliderDot:hover {
+            background-color: #d20000;
+        }
+    }
+}

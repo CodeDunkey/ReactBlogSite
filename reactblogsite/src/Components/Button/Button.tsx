@@ -6,7 +6,8 @@ export enum Type {
     SIGNUP = "signUp",
     RED = "red",
     BLOG = "blog",
-    EXIT = "exit"
+    SAVE = "save",
+    EXIT = "exit",
 }
 export interface ButtonProps {
     onClick: () => void;

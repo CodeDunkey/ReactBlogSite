@@ -1,6 +1,12 @@
 .postCarouselWrapper {
+
+    height: 250px;
+    background-image: linea-gradient(lightblue, lightgrey);
     .postCarousel {
-        // border: 1px solid black;
+        // display: flex;
+        // justify-content: center;
+
+        border: 1px solid black;
         padding: 25px;
         border-radius: 20px;
         box-shadow: 0px 0px 20px 1px black, inset 0px 0px 10px 1px black;

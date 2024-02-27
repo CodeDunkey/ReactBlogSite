@@ -5,19 +5,23 @@ export const MyPosts = () => {
     // console.log("user in Main", user)
     let myPosts;
     if (user !== undefined) {
-        myPosts = user.post?.map((post) => {
+        myPosts = user.blog?.map((blog) => {
+            let posts = blog.post?.map((post) => {
+                return post.text
+            })
             return (
-                <>
-                    <h2>{post.headLine}</h2>
-                    <p>{post.text}</p>
-                </>
+                <div className='myPosts'>
+                    <h2>{blog.blogTitle}</h2>
+                    <p>{posts}</p>
+
+                </div>
             )
         })
     }
     return (
         <div>
-            <div className='myPosts'>{myPosts}</div>
-            <div>itaque possimus eum ducimus alias, necessitatibus illo, autem reiciendis! Deserunt at fugit animi a provident consectetur facere, quasi, aperiam ducimus modi, culpa eos vel commodi earum dolores?</div>
+            Here is all your blogs
+            <div >{myPosts}</div>
         </div>
     )
 }

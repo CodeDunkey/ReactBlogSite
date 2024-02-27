@@ -86,6 +86,33 @@
     box-shadow: 0px 0px 10px 1px black; 
     // background: #ed0000;
 }
+.button__save{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    color: #fff;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+    background-image: linear-gradient(180deg, #50b6ff, #5145ff);
+    width: 140px;
+    height: 40px;
+    // border-radius: 1px;
+    // border: 0;
+    
+    margin: 2.5px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px black; 
+}
+.button__save:hover {
+    // border: 5px solid blue;
+    box-shadow: 0px 0px 10px 1px black; 
+    // background: #ed0000;
+}
 .button__blog{
     display: flex;
     justify-content: center;

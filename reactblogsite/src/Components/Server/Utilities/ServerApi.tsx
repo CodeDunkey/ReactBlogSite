@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { User, Post, Comment } from "../../../Types/Types"
+import { User, Blog, Post, Comment } from "../../../Types/Types"
 import { Users } from "../Database/Users"
 
 class ServerAPI {
@@ -27,26 +27,34 @@ class ServerAPI {
         })
         return userVerified
     }
-
-    getPosts = () => {
+    updateUser = (user: User) => {
+        const findUser = Users.find((aUser) => {
+            if ( user.userName === aUser.userName ) {
+                return aUser
+            }
+        })
+        return findUser
+    }
+    getBlogs = () => {
         
         const userPosts = Users.flatMap((user) => {
-            return user.post || []
+            return user.blog || []
         })
         return userPosts
-
-        
     }
-    // getPosts = () => {
+    addNewBlog = ( blog: Blog, userName: string) => {
+        const newBlog: Blog = {
+            userName: userName,
+            blogTitle: blog.blogTitle,
+        }
+        const findUserAddBlog = Users.find((user) => {
+            if(user.userName === userName){
+                user.blog?.push(newBlog)
+            }
+        })
 
-    //     const usersWithPosts = Users.filter((user) =>            
-    //         user.post !== undefined
-    //     )
-    //     const userPosts = usersWithPosts.map((user)=> {
-    //         return user.post
-    //     })
-    //     return userPosts || []
-    // }
+    }
+    
 }
 
 console.log("Users",Users)

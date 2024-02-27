@@ -5,9 +5,9 @@ import { Button, Type } from "../../../Button/Button"
 import { ChangeEvent, KeyboardEvent, Dispatch, SetStateAction, useRef } from "react";
 import { UserContextValue } from "../../../../Hooks/Context/UserContextCreateProvider";
 export const LogIn = () => {
-    
+
     const { user, setUser, validateUserAndPassword } = useUser();
-    const {logIn, setLogIn, keyDown, setKeyDown} = useLogInSignUp()
+    const { logIn, setLogIn, keyDown, setKeyDown } = useLogInSignUp()
     // isUserValidated, setIsUserValidated, 
     let inputUser = useRef<string>("")
     let inputPassword = useRef<string>("")
@@ -15,7 +15,7 @@ export const LogIn = () => {
     const toggleLogIn = () => {
         setLogIn(!logIn)
     }
-    
+
     const toggleLogOut = () => {
         setUser(undefined)
         setLogIn(!logIn)
@@ -32,13 +32,13 @@ export const LogIn = () => {
 
     if (logIn && keyDown === 'Enter') {
 
-            if (inputUser.current !== "" && inputPassword.current !== "") {
-                validateUserAndPassword({ userName: inputUser.current, password: inputPassword.current });
-        
-            }
-            inputUser.current = "";
-            inputPassword.current = "";
+        if (inputUser.current !== "" && inputPassword.current !== "") {
+            validateUserAndPassword({ userName: inputUser.current, password: inputPassword.current });
+
         }
+        inputUser.current = "";
+        inputPassword.current = "";
+    }
     const reactModalStyles = {
         overlay: {
             backgroundColor: "rgba(150, 150, 150, 0.75)"
@@ -58,7 +58,7 @@ export const LogIn = () => {
         outline: 'none',
         padding: '40px',
     }
-    
+
     return (
         <div>
             {!user && <Button buttonType={Type.LOGIN} text="Log in" onClick={toggleLogIn} />}

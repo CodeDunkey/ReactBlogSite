@@ -1,13 +1,19 @@
 export interface Comment {
-    comment: string,
-    userId: number,
+    userName: string,
     DateTimeStamp: string
+    comment: string,
 }
 export interface Post {
+    userName: string,
+    dateTimeStamp: string
+    postTitle: string,
     headLine: string,
     text: string,
-    userId: number,
-    DateTimeStamp: string
+}
+export interface Blog {
+    userName: string,
+    blogTitle: string,
+    post?: Post[],
 }
 export interface User {
     userId: number,
@@ -17,23 +23,7 @@ export interface User {
     firstName: string,
     lastName: string,
     userName: string,
-    blogName?: string,
-    post?: Post[],
+    blog?: Blog[],
     comments?: Comment[],
 }
-// export interface User {
-//     userId: number,
-//     createdDateTime: string
-//     email: string,
-//     password: string,
-//     firstName: string,
-//     lastName: string,
-//     userName: string,
-//     blog?: string,
-//     comments?: Comment[],
-// }
 
-interface Blog {
-    blogTitle: string,
-    post?: Post[],
-}

@@ -3,18 +3,18 @@ import { useUser } from '../../../Hooks/useUser'
 export const FooterWrapper = () => {
     const {user} = useUser();
 
-    let posts;
-    if(user !== undefined){
-    posts = user.post?.map((element) => 
-        <div className='posts'>
-            <h1>{element.headLine}</h1>
-            <p>{element.text}</p>
-        </div>
-    )
-    }
+    // let posts;
+    // if(user !== undefined){
+    // posts = user.blog?.map((element) => 
+    //     <div className='posts'>
+    //         <h1>{element.blogTitle}</h1>
+            
+    //     </div>
+    // )
+    // }
     return (
         <div className="footerWrapper">
-            {posts}
+            
         </div>
     )
 }

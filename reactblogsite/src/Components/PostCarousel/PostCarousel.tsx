@@ -1,18 +1,25 @@
-import { useViewBloggersContent } from "../../Hooks/useViewBloggersContent";
+import { useBlogs } from "../../Hooks/useBlogs";
 import { Post } from "../../Types/Types";
-import './ShowContentFromUsers.scss'
+import './PostCarousel.scss'
 export const PostCarousel = () => {
-    const { posts } = useViewBloggersContent();
+    const { blogs } = useBlogs();
 
-    const postCarousel = posts.map((post) => {
+    const postCarousel = blogs.map((blog) => {
+        const posts = blog.post?.map((post) => {
+            return <h5>{post.headLine}</h5>
+        })
         return (
             <div className="postCarouselWrapper">
-                <h1 className="postCarousel">{post.headLine}</h1>
-
+                <div className="postCarousel">
+                    <h1>{blog.blogTitle}</h1>
+                    <div>{posts}</div>
+                </div>
             </div>
         )
     })
     return (
-        { postCarousel }
+        <>
+            {postCarousel}
+        </>
     )
 }

@@ -1,4 +1,5 @@
 import { serverAPI } from "../Components/Server/Utilities/ServerApi";
+import { Blog, User } from "../Types/Types";
 class ClientAPI {
 
     addUser = (userName: string, password: string, email: string, firstName: string, lastName: string) => {
@@ -7,9 +8,14 @@ class ClientAPI {
     validateUserAndPassword = ( userName: string, password: string ) => {
         return serverAPI.userVerification( userName, password );
     }
-
-    getPosts = () => {
-        return serverAPI.getPosts();
+    getBlogs = () => {
+        return serverAPI.getBlogs();
+    }
+    addNewBlog = (blog: Blog, userName: string) => {
+        serverAPI.addNewBlog(blog, userName)
+    }
+    updateUser = (user: User) => {
+        return serverAPI.updateUser(user)
     }
 }
 

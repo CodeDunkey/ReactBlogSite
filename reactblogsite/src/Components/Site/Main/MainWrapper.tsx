@@ -9,11 +9,9 @@ export const MainWrapper = () => {
     
     return (
         <div className="mainWrapper" >
-
-            {/* <ShowContentFromUsers /> */}
+            <PostCarousel />
             {(!user) && (<div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima, quibusdam quam perspiciatis libero iusto officia ab est eaque, quaerat placeat reprehenderit, similique dolore vitae natus eos dolor sequi esse atque in tempore dolorum corporis nam. </div>)}
             {(user) && <MyPosts/>}
-
         </div>
     )
 }

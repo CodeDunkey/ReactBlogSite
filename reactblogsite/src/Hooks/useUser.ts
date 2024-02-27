@@ -5,21 +5,17 @@ export const useUser = () => {
     
     const userContext = useContext(UserContext);
     
-    const validateUserAndPassword = ({userName, password}: any)=>{ // skal types med username og password
+    const validateUserAndPassword = ({userName, password}:{userName: string, password: string})=>{ // skal types med username og password
         
         let user = clientApi.validateUserAndPassword(userName, password)
         console.log("userAndPassword in useLogIn", user)
         if(user !== undefined){
             userContext.setUser(user)
-            // userContext.setIsUserValidated(true)
         }
     }
     return {
-        
         user: userContext.user,
         setUser: userContext.setUser,
-        // isUserValidated: userContext.isUserValidated,
-        // setIsUserValidated: userContext.setIsUserValidated,
         validateUserAndPassword,
     }
 

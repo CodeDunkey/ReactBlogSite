@@ -2,29 +2,22 @@ import ReactModal from "react-modal";
 import { useUser } from "../../../../Hooks/useUser";
 import { useLogInSignUp } from "../../../../Hooks/useLogInSignUp";
 import { Button, Type } from "../../../Button/Button"
-import { ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, KeyboardEvent, Dispatch, SetStateAction, useRef } from "react";
+import { UserContextValue } from "../../../../Hooks/Context/UserContextCreateProvider";
 export const LogIn = () => {
     
     const { user, setUser, validateUserAndPassword } = useUser();
-    const {logIn, setLogIn, setKeyDown, inputUser, inputPassword } = useLogInSignUp()
+    const {logIn, setLogIn, keyDown, setKeyDown} = useLogInSignUp()
     // isUserValidated, setIsUserValidated, 
-
+    let inputUser = useRef<string>("")
+    let inputPassword = useRef<string>("")
 
     const toggleLogIn = () => {
         setLogIn(!logIn)
     }
     
     const toggleLogOut = () => {
-        setUser({
-            userName: "",
-            userId: 0,
-            createdDateTime: "",
-            email: "",
-            password: "",
-            firstName: "",
-            lastName: "",
-        })
-        // setIsUserValidated(false)
+        setUser(undefined)
         setLogIn(!logIn)
     }
     const keyPress = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -37,6 +30,15 @@ export const LogIn = () => {
         inputPassword.current = x.target.value
     }
 
+    if (logIn && keyDown === 'Enter') {
+
+            if (inputUser.current !== "" && inputPassword.current !== "") {
+                validateUserAndPassword({ userName: inputUser.current, password: inputPassword.current });
+        
+            }
+            inputUser.current = "";
+            inputPassword.current = "";
+        }
     const reactModalStyles = {
         overlay: {
             backgroundColor: "rgba(150, 150, 150, 0.75)"

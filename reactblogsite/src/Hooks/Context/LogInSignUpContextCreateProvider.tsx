@@ -3,38 +3,37 @@ import { ReactElement, createContext, useState, useRef, MutableRefObject } from 
 export type LogInSignUpContextValue = {
     logIn: boolean,
     setLogIn: (logIn: boolean) => void,
+    singUp: boolean,
+    setSignUp: (signUp: boolean) => void,
     keyDown: string,
     setKeyDown: (keyDown: string) => void,
-    inputUser: MutableRefObject<string>,
-    inputPassword: MutableRefObject<string>,
+
 }
 export const LogInSignUpContext = createContext<LogInSignUpContextValue>({
     logIn: false,
     setLogIn: () => { },
+    singUp: false,
+    setSignUp: () => { },
     keyDown: "",
-    setKeyDown: () => {},
-    inputUser: useRef<string>(),
-    inputPassword: ,
+    setKeyDown: () => { },
+
 });
 
 export const LogInSignUpContextProvider = ({ children }: { children: ReactElement }) => {
-
     const [logIn, setLogIn] = useState<boolean>(false)
+    const [singUp, setSignUp] = useState(false)
     const [keyDown, setKeyDown] = useState("")
-    let inputUser = useRef<string>("")
-    let inputPassword = useRef<string>("")
-    let inputEmail = useRef<string>("")
-    let inputFirstName = useRef<string>("")
-    let inputLastName = useRef<string>("")
+
     return (
-        <LogInSignUpContext.Provider value={{ 
-            logIn, 
-            setLogIn, 
-            keyDown, 
+        <LogInSignUpContext.Provider value={{
+            logIn,
+            setLogIn,
+            singUp,
+            setSignUp,
+            keyDown,
             setKeyDown,
-            inputUser,
-            inputPassword,
-            }}>
+
+        }}>
             {children}
         </LogInSignUpContext.Provider>
     )
@@ -43,10 +42,14 @@ export const LogInSignUpContextProvider = ({ children }: { children: ReactElemen
 
 
 // const { user, setUser, validateUserAndPassword } = useUser();
-// // isUserValidated, setIsUserValidated, 
+// // isUserValidated, setIsUserValidated,
 // const { addUser } = useAddNewUser();
 
-
+// let inputUser = useRef<string>("")
+//     let inputPassword = useRef<string>("")
+//     let inputEmail = useRef<string>("")
+//     let inputFirstName = useRef<string>("")
+//     let inputLastName = useRef<string>("")
 
 // if (logIn && keyDown === 'Enter') {
 
@@ -149,11 +152,11 @@ export const LogInSignUpContextProvider = ({ children }: { children: ReactElemen
 //         {!logIn && <Button buttonType={Type.SIGNUP} text="Sign up" onClick={toggleSignUp}></Button>}
 //         {
 //             !user
-//             // !isUserValidated 
+//             // !isUserValidated
 //             && <Button buttonType={Type.LOGIN} text="Log in" onClick={toggleLogIn} />}
 //         {
 //             user
-//             // isUserValidated 
+//             // isUserValidated
 //             && <Button buttonType={Type.LOGIN} text="Log out" onClick={toggleLogOut} />}
 //         <ReactModal style={{ overlay: reactModalStyles.overlay, content: modalContentStyles }} isOpen={logIn &&
 //             !user

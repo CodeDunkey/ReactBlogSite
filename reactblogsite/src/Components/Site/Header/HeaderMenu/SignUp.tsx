@@ -4,13 +4,15 @@ import { Button, Type } from "../../../Button/Button"
 import ReactModal from "react-modal"
 export const SignUp = () => {
     
-    const [singUp, setSignUp] = useState(false)
-    const { logIn, setLogIn} = useLogInSignUp()
+    
+    const { logIn, signUp, setSignUp} = useLogInSignUp()
 
     const toggleSignUp = () => {
-        setSignUp(!singUp)
+        setSignUp(!signUp)
     }
     
+    
+
     const reactModalStyles: any = {
         overlay: {
             backgroundColor: "rgba(150, 150, 150, 0.75)"
@@ -35,7 +37,7 @@ export const SignUp = () => {
     return (
         <div>
             {!logIn && <Button buttonType={Type.SIGNUP} text="Sign up" onClick={toggleSignUp}></Button>}
-            <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={singUp} >
+            <ReactModal style={{ overlay: reactModalStyles.overlay, content: reactModalStyles.content }} isOpen={signUp} >
                 <label htmlFor="user name" >User name</label>
                 {/* <input id="user name" onChange={textInputUser} onKeyDown={keyPress} placeholder='User Name'></input> */}
                 <br></br>

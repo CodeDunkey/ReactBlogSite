@@ -19,6 +19,5 @@ export const MyPosts = () => {
             <div className='myPosts'>{myPosts}</div>
             <div>itaque possimus eum ducimus alias, necessitatibus illo, autem reiciendis! Deserunt at fugit animi a provident consectetur facere, quasi, aperiam ducimus modi, culpa eos vel commodi earum dolores?</div>
         </div>
-        // { myPosts }
     )
 }

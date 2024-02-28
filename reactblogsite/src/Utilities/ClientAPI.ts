@@ -14,9 +14,9 @@ class ClientAPI {
     addNewBlog = (blog: Blog, userName: string) => {
         serverAPI.addNewBlog(blog, userName)
     }
-    updateUser = (user: User) => {
-        return serverAPI.updateUser(user)
-    }
+    // updateUser = (user: User) => {
+    //     return serverAPI.updateUser(user)
+    // }
 }
 
 export const clientApi = new ClientAPI();

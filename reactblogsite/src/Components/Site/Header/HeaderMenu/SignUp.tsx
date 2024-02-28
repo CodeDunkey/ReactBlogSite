@@ -1,5 +1,5 @@
-import { useState, useRef, ChangeEvent, KeyboardEvent } from "react"
-import { useLogInSignUp } from "../../../../Hooks/useLogInSignUp"
+import { useRef, ChangeEvent, KeyboardEvent } from "react"
+import { useLogInSignUp } from "../../../../Hooks/useLogInSignUpContext"
 import { Button, Type } from "../../../Button/Button"
 import { useAddNewUser } from "../../../../Hooks/useAddNewUser"
 import ReactModal from "react-modal"

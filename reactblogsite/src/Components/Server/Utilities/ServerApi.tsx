@@ -5,8 +5,6 @@ import { Users } from "../Database/Users"
 class ServerAPI {
     addUser = (userName: string, password: string, email: string, firstName: string, lastName: string) => {
         let userCount = Users.length;
-        console.log("is adding user")
-        console.log("userCount",userCount)
         const newUser: User = {
             userId: userCount + 1,
             userName: userName,
@@ -17,11 +15,9 @@ class ServerAPI {
             lastName: lastName,
         }
         Users.push(newUser)
-        console.log("Users",Users)
         
     }
     userVerification = (userName: string, password: string) => {
-        console.log("is validating user")
         const userVerified = Users.find((user) => {
             if (userName === user.userName && password === user.password) {
                 return user
@@ -29,16 +25,15 @@ class ServerAPI {
         })
         return userVerified
     }
-    updateUser = (user: User) => {
-        const findUser = Users.find((aUser) => {
-            if ( user.userName === aUser.userName ) {
-                return aUser
-            }
-        })
-        return findUser
-    }
+    // updateUser = (user: User) => {
+    //     const findUser = Users.find((aUser) => {
+    //         if ( user.userName === aUser.userName ) {
+    //             return aUser
+    //         }
+    //     })
+    //     return findUser
+    // }
     getBlogs = () => {
-        
         const userPosts = Users.flatMap((user) => {
             return user.blog || []
         })
@@ -54,10 +49,8 @@ class ServerAPI {
                 user.blog?.push(newBlog)
             }
         })
-
+        
     }
     
 }
-
-console.log("Users",Users)
 export const serverAPI = new ServerAPI(); 

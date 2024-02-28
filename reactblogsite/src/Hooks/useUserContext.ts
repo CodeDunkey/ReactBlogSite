@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { UserContext } from "./Context/UserContextCreateProvider"
 import { clientApi } from "../Utilities/ClientAPI";
-export const useUser = () => { 
+export const useUserContext = () => { 
     
 
 
@@ -20,5 +20,4 @@ export const useUser = () => {
         setUser: userContext.setUser,
         validateUserAndPassword,
     }
-
 }

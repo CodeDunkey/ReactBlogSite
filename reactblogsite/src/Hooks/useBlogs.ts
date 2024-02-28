@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { clientApi } from "../Utilities/ClientAPI";
 import { Blog, Post } from "../Types/Types";
+import { useBlogContext } from "./useBlogContext";
+import { useUserContext } from "./useUserContext";
 export const useBlogs = () => {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-    
+    const {user} = useUserContext();
+    const { blogs, setBlogs} = useBlogContext();
     //     const userPosts = clientApi.getPosts();
     //     // const show = userPosts.map((e)=> e.headLine)
     // // const getPosts = () => {
@@ -18,15 +20,18 @@ export const useBlogs = () => {
     //     setBlogs([...blogs, serverBlog as unknown as Blog ]);
     // }
     
-    // console.log("show in use", show)
+    console.log("blogs in useBlogs", blogs)
     useEffect(()=>{
         const getBlogs = () => {
             const userBlogs = clientApi.getBlogs();
             setBlogs(userBlogs)
+            console.log("userBlogs", userBlogs)
         }
         getBlogs();
-    },[])
+    },[user]) // 
     return {
         blogs,
     }
 }
+
+// skal flyttes ud i en context

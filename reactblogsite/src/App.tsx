@@ -5,6 +5,7 @@ import { MainWrapper } from './Components/Site/Main/MainWrapper';
 import { FooterWrapper } from './Components/Site/Footer/FooterWrapper';
 import { UserContextProvider } from './Hooks/Context/UserContextCreateProvider';
 import { LogInSignUpContextProvider } from './Hooks/Context/LogInSignUpContextCreateProvider';
+import { BlogContextProvider } from './Hooks/Context/BlogContextProvider';
 function App() {
 
 
@@ -13,11 +14,13 @@ function App() {
     <div className='App'>
       <LogInSignUpContextProvider>
         <UserContextProvider>
-          <div className='siteWrapper'>
-            <HeaderWrapper />
-            <MainWrapper />
-            <FooterWrapper />
-          </div>
+          <BlogContextProvider>
+            <div className='siteWrapper'>
+              <HeaderWrapper />
+              <MainWrapper />
+              <FooterWrapper />
+            </div>
+          </BlogContextProvider>
         </UserContextProvider>
       </LogInSignUpContextProvider>
     </div>

@@ -1,14 +1,13 @@
 import { useState, useRef, KeyboardEvent, ChangeEvent } from "react"
 import ReactModal from "react-modal"
 import { Button, Type } from "../../../Button/Button"
-import { useUser } from "../../../../Hooks/useUser"
-import { useLogInSignUp } from "../../../../Hooks/useLogInSignUp"
+import { useUserContext } from "../../../../Hooks/useUserContext"
+import { useLogInSignUp } from "../../../../Hooks/useLogInSignUpContext"
 import { Blog, Post } from "../../../../Types/Types"
-import { click } from "@testing-library/user-event/dist/click"
 import { clientApi } from "../../../../Utilities/ClientAPI"
 export const NewBlog = () => {
     const [newBlog, setNewBlog] = useState<boolean>(false)
-    const { user } = useUser()
+    const { user } = useUserContext()
     const {keyDown, setKeyDown} = useLogInSignUp()
 
     let blogTitle = useRef<string>()
@@ -49,7 +48,7 @@ export const NewBlog = () => {
         setNewBlog(!newBlog)
 
     }
-    console.log(blogTitle)
+    
     const keyPress = (event: KeyboardEvent<HTMLInputElement>) => {
         setKeyDown(event.key)
     }
@@ -68,7 +67,7 @@ export const NewBlog = () => {
     // const textinputLastName = (x: ChangeEvent<HTMLInputElement>) => {
     //     .current = x.target.value;
     // }
-    console.log(newBlog)
+    
     return (
         <div>
             <Button buttonType={Type.BLOG} onClick={toggleNewBlog} text='Create new blog' />

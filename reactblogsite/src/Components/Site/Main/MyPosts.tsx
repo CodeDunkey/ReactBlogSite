@@ -1,7 +1,8 @@
-import { useUser } from "../../../Hooks/useUser";
-
+import { useUserContext } from "../../../Hooks/useUserContext";
+import { useBlogs } from "../../../Hooks/useBlogs";
 export const MyPosts = () => {
-    const { user } = useUser();
+    const { user } = useUserContext();
+    const { blogs } = useBlogs()
     // console.log("user in Main", user)
     let myPosts;
     if (user !== undefined) {

@@ -1,7 +1,7 @@
 import './FooterWrapper.scss'
-import { useUser } from '../../../Hooks/useUser'
+import { useUserContext } from '../../../Hooks/useUserContext'
 export const FooterWrapper = () => {
-    const {user} = useUser();
+    const {user} = useUserContext();
 
     // let posts;
     // if(user !== undefined){

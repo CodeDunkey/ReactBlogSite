@@ -3,13 +3,14 @@ import ReactModal from "react-modal"
 import { Button, Type } from "../../../Button/Button"
 import { useUserContext } from "../../../../Hooks/useUserContext"
 import { useLogInSignUp } from "../../../../Hooks/useLogInSignUpContext"
-import { Blog, Post } from "../../../../Types/Types"
-import { clientApi } from "../../../../Utilities/ClientAPI"
+import { useAddNewBlog } from "../../../../Hooks/useAddNewBlog"
+import { Blog, Post, User } from "../../../../Types/Types"
+
 export const NewBlog = () => {
     const [newBlog, setNewBlog] = useState<boolean>(false)
-    const { user } = useUserContext()
+    const { user, setUser } = useUserContext()
     const {keyDown, setKeyDown} = useLogInSignUp()
-
+    const { addNewBlog } = useAddNewBlog()
     let blogTitle = useRef<string>()
     let postTitle = useRef<string>()
     let inputEmail = useRef<string>()
@@ -26,8 +27,10 @@ export const NewBlog = () => {
             postTitle.current = undefined;
         }
     }
-    
-    const addNewBlog = () => {
+    const userObject =() =>{
+        
+    }
+    const newBlogAdd = async () => {
         if( blogTitle.current !== undefined && user){
             let newPost: Post = {
                 userName: user.userName,
@@ -36,12 +39,14 @@ export const NewBlog = () => {
                 text: "",
                 dateTimeStamp: new Date().toLocaleString(),
             }
-            let newBlog: Blog = {
+            let blog: Blog = {
                 userName: user.userName,
                 blogTitle: blogTitle.current,
                 // post?: newPost, 
             }
-            clientApi.addNewBlog(newBlog, user.userName)
+            const addBlogToUser = await addNewBlog({blog: blog, userName: user.userName})
+            console.log("addNewBlogAndReturnUser:", addBlogToUser)
+            setUser(addBlogToUser)
         }
         blogTitle.current = undefined;
         postTitle.current = undefined;
@@ -55,9 +60,9 @@ export const NewBlog = () => {
     const textBlogTitle = (x: ChangeEvent<HTMLInputElement>) => {
         blogTitle.current = x.target.value;
     }
-    const textPostTitle = (x: ChangeEvent<HTMLInputElement>) => {
-        postTitle.current = x.target.value
-    }
+    // const textPostTitle = (x: ChangeEvent<HTMLInputElement>) => {
+    //     postTitle.current = x.target.value
+    // }
     // const textinputEmail = (x: ChangeEvent<HTMLInputElement>) => {
     //     .current = x.target.value;
     // }
@@ -76,10 +81,10 @@ export const NewBlog = () => {
                 <Button buttonType={Type.EXIT} text="X" onClick={toggleNewBlog}></Button>
                 <label htmlFor="blog title" >Blog title:</label>
                 <input id="blog title" onChange={textBlogTitle} onKeyDown={keyPress} placeholder='Blog title'></input>
-                <br></br>
+                {/*<br></br>
                 <label htmlFor="post title" >Post title</label>
                 <input id="post title" onChange={textPostTitle} onKeyDown={keyPress} placeholder='Post title'></input>
-                {/* <br></br>
+                 <br></br>
                 <label htmlFor="email" >Email</label>
                 <input id="email" onChange={textinputEmail} onKeyDown={keyPress} placeholder='Email'></input>
                 <br></br>
@@ -89,7 +94,7 @@ export const NewBlog = () => {
                 <label htmlFor="Last name" >Last name</label>
             <input id="Last name" onChange={textinputLastName} onKeyDown={keyPress} placeholder='Last name'></input> */}
 
-            <Button buttonType={Type.SAVE} text="SAVE" onClick={addNewBlog}></Button>
+            {(blogTitle.current) &&<Button buttonType={Type.SAVE} text="SAVE" onClick={newBlogAdd}></Button>}
             </ReactModal>
         </div>
 

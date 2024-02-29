@@ -3,20 +3,20 @@ import { clientApi } from "../Utilities/ClientAPI";
 import { Blog, Post } from "../Types/Types";
 import { useBlogContext } from "./useBlogContext";
 import { useUserContext } from "./useUserContext";
-export const useBlogs = () => {
+export const useLoggedInUserBlogs = () => {
+    const { user, setUser } = useUserContext()
     const { blogs, setBlogs} = useBlogContext();
-    const { user } = useUserContext();
-    console.log("user in useBlogs", user)
+    console.log("user in useLoggedInUserBlogs", user)
+
+    // const newBlogs = clientApi
     useEffect(()=>{
         const getBlogs = async () => {
             const userBlogs = await clientApi.getBlogs();
             setBlogs(userBlogs)
         }
         getBlogs();
-    },[]) // 
+    },[blogs]) // 
     return {
-        blogs,
+        blogs
     }
 }
-
-// skal flyttes ud i en context

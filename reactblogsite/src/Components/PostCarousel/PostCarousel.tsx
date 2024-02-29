@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useBlogs } from "../../Hooks/useBlogs";
-import { Blog, Post } from "../../Types/Types";
+
 import './PostCarousel.scss'
-import { useBlogContext } from "../../Hooks/useBlogContext";
+
 export const PostCarousel = () => {
     const [blogAmound, setBlogAmound] = useState<number>(1);
     const { blogs } = useBlogs();
-    console.log("blogs in PostCarousel", blogs)
-    let blogArray;
+    // console.log("blogs in PostCarousel", blogs)
+   
 
     
 

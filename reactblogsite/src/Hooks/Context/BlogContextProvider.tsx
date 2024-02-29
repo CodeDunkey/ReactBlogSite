@@ -13,7 +13,7 @@ export const BlogContext = createContext<BlogContextValue>({
 export const BlogContextProvider = ({ children }: { children: ReactElement }) => {
 
     const [blogs, setBlogs] = useState<Blog[]>([]);
-    console.log('blogs in BlogContextProvider: ', blogs);
+    
     return (
         <BlogContext.Provider value={{ blogs, setBlogs }}>
             {children}

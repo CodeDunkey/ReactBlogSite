@@ -7,9 +7,9 @@ export const useUserContext = () => {
 
     const userContext = useContext(UserContext);
     
-    const validateUserAndPassword = ({userName, password}:{userName: string, password: string})=>{ // skal types med username og password
+    const validateUserAndPassword = async ({userName, password}:{userName: string, password: string})=>{ // skal types med username og password
         
-        let user = clientApi.validateUserAndPassword(userName, password)
+        let user = await clientApi.validateUserAndPassword(userName, password)
         
         if(user !== undefined){
             userContext.setUser(user)

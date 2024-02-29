@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { User, Blog, Post, Comment } from "../../../Types/Types"
 import { Users } from "../Database/Users"
+import { resolve } from "path";
 
 class ServerAPI {
-    addUser = (userName: string, password: string, email: string, firstName: string, lastName: string) => {
+    addUser = async (userName: string, password: string, email: string, firstName: string, lastName: string) => {
         let userCount = Users.length;
         const newUser: User = {
             userId: userCount + 1,
@@ -15,42 +16,47 @@ class ServerAPI {
             lastName: lastName,
         }
         Users.push(newUser)
-        
+        return new Promise<User | undefined>((resolve) => { resolve(newUser) })
     }
-    userVerification = (userName: string, password: string) => {
+
+    userVerification = async (userName: string, password: string) => {
         const userVerified = Users.find((user) => {
             if (userName === user.userName && password === user.password) {
                 return user
             }
         })
-        return userVerified
+        return new Promise<User | undefined>((resolve, reject) => { resolve(userVerified) })
     }
-    // updateUser = (user: User) => {
-    //     const findUser = Users.find((aUser) => {
-    //         if ( user.userName === aUser.userName ) {
-    //             return aUser
-    //         }
-    //     })
-    //     return findUser
-    // }
-    getBlogs = () => {
-        const userPosts = Users.flatMap((user) => {
+
+    getBlogs = async () => {
+        const userBlogs = Users.flatMap((user) => {
             return user.blog || []
         })
-        return userPosts
+
+        return new Promise<Blog[]>((resolve, reject) => { resolve(userBlogs) })
     }
-    addNewBlog = ( blog: Blog, userName: string) => {
+    addNewBlog = async (blog: Blog, userName: string) => {
+        
         const newBlog: Blog = {
             userName: userName,
             blogTitle: blog.blogTitle,
         }
         const findUserAddBlog = Users.find((user) => {
-            if(user.userName === userName){
+
+            if (user.userName === userName) {
                 user.blog?.push(newBlog)
+                const userObject = {...user}
+                // userObject.user = user;
+                // console.log(userObject === user, userObject, user)
+                return userObject
             }
+
         })
-        
+        console.log("findUserAddBlog", findUserAddBlog)
+        return new Promise<User | undefined>((resolve, reject) => {
+            resolve(findUserAddBlog)
+        })
     }
-    
+
 }
 export const serverAPI = new ServerAPI(); 

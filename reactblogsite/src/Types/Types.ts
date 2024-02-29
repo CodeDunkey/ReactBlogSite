@@ -1,6 +1,6 @@
 export interface Comment {
     userName: string,
-    DateTimeStamp: string
+    dateTimeStamp: string,
     comment: string,
 }
 export interface Post {

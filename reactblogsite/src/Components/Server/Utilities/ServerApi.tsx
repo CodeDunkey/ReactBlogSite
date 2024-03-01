@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 import { User, Blog, Post, Comment } from "../../../Types/Types"
 import { Users } from "../Database/Users"
 import { resolve } from "path";
@@ -43,16 +43,28 @@ class ServerAPI {
         }
         const findUserAddBlog = Users.find((user) => {
 
-            if (user.userName === userName) {
-                user.blog?.push(newBlog)
-                const userObject = {...user}
-                // userObject.user = user;
-                // console.log(userObject === user, userObject, user)
-                return userObject
+            if (user.userName === userName && user.blog !== undefined) {
+                user.blog.push(newBlog)
+                
+                // const newUserObject = {...user}
+                // console.log("user === {...user}", user === newUserObject )
+                
+                // console.log('user', user);
+                // console.log('newUserObject', newUserObject);
+                // return newUserObject
+                return user
             }
 
+            if (user.userName === userName && user.blog === undefined) {
+                user.blog = []
+                user.blog.push(newBlog)
+                
+                return user
+            }
         })
-        console.log("findUserAddBlog", findUserAddBlog)
+        // let userss =  Users.map((user)=>{return console.log("user === findUserAddBlog", user === findUserAddBlog ) })
+        
+        // console.log("findUserAddBlog in server", findUserAddBlog)
         return new Promise<User | undefined>((resolve, reject) => {
             resolve(findUserAddBlog)
         })

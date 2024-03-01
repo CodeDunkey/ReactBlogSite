@@ -6,14 +6,14 @@ import { useUserContext } from "./useUserContext";
 export const useBlogs = () => {
     const { blogs, setBlogs} = useBlogContext();
     const { user } = useUserContext();
-    console.log("user in useBlogs", user)
+    // console.log("user in useBlogs", user)
     useEffect(()=>{
         const getBlogs = async () => {
             const userBlogs = await clientApi.getBlogs();
             setBlogs(userBlogs)
         }
         getBlogs();
-    },[]) // 
+    },[user]) // 
     return {
         blogs,
     }

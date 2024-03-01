@@ -1,11 +1,10 @@
-import { useLoggedInUserBlogs } from "../../../Hooks/useLoggedInUserBlogs";
+import { useState, useEffect } from "react";
 import { useUserContext } from "../../../Hooks/useUserContext";
 import { Blog } from "../../../Types/Types";
 
 export const UserLoggedInPosts = () => {
     const { user } = useUserContext();
-    // const { blogs } = useLoggedInUserBlogs();
-    console.log("user in UserLoggedInPosts", user)
+
     const userBlogPosts = user?.blog?.map((blog) => {
 
         let posts = blog.post?.map((post) => {
@@ -15,7 +14,6 @@ export const UserLoggedInPosts = () => {
             <div className='Posts'>
                 <h2>{blog.blogTitle}</h2>
                 <p>{posts}</p>
-
             </div>
         )
     })

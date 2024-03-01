@@ -15,6 +15,8 @@ export const useUserContext = () => {
             userContext.setUser(user)
         }
     }
+
+    
     return {
         user: userContext.user,
         setUser: userContext.setUser,

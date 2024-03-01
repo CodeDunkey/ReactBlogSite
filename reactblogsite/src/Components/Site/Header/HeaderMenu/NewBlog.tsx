@@ -9,7 +9,7 @@ import { Blog, Post, User } from "../../../../Types/Types"
 export const NewBlog = () => {
     const [newBlog, setNewBlog] = useState<boolean>(false)
     const { user, setUser } = useUserContext()
-    const {keyDown, setKeyDown} = useLogInSignUp()
+    const { keyDown, setKeyDown } = useLogInSignUp()
     const { addNewBlog } = useAddNewBlog()
     let blogTitle = useRef<string>()
     let postTitle = useRef<string>()
@@ -27,11 +27,14 @@ export const NewBlog = () => {
             postTitle.current = undefined;
         }
     }
-    const userObject =() =>{
-        
-    }
+    
     const newBlogAdd = async () => {
-        if( blogTitle.current !== undefined && user){
+
+        let addBlogToUser;
+        // console.log("addBlogToUser in newBlog: ", addBlogToUser)
+        if (blogTitle.current !== undefined && user) {
+            addBlogToUser = undefined
+            console.log("addBlogToUser after being undefined: ", addBlogToUser)
             let newPost: Post = {
                 userName: user.userName,
                 postTitle: "",
@@ -44,16 +47,30 @@ export const NewBlog = () => {
                 blogTitle: blogTitle.current,
                 // post?: newPost, 
             }
-            const addBlogToUser = await addNewBlog({blog: blog, userName: user.userName})
-            console.log("addNewBlogAndReturnUser:", addBlogToUser)
-            setUser(addBlogToUser)
+            addBlogToUser = await addNewBlog({ blog: blog, userName: user.userName })
+            // console.log("addBlogToUser after being initialised: ", addBlogToUser)
+
+            if (addBlogToUser !== undefined){
+                // console.log("works")
+                // console.log("user === addBlogToUser in newBlogAdd", user === addBlogToUser )
+                setUser({...addBlogToUser})
+            }
         }
+        
+        // console.log("addNewBlogAndReturnUser:", addBlogToUser)
+        
         blogTitle.current = undefined;
         postTitle.current = undefined;
+        
+        
+        // activates the modal
         setNewBlog(!newBlog)
+        
 
     }
-    
+    // console.log("user in newBlog: ", user)
+
+
     const keyPress = (event: KeyboardEvent<HTMLInputElement>) => {
         setKeyDown(event.key)
     }
@@ -72,7 +89,7 @@ export const NewBlog = () => {
     // const textinputLastName = (x: ChangeEvent<HTMLInputElement>) => {
     //     .current = x.target.value;
     // }
-    
+
     return (
         <div>
             <Button buttonType={Type.BLOG} onClick={toggleNewBlog} text='Create new blog' />
@@ -94,7 +111,7 @@ export const NewBlog = () => {
                 <label htmlFor="Last name" >Last name</label>
             <input id="Last name" onChange={textinputLastName} onKeyDown={keyPress} placeholder='Last name'></input> */}
 
-            {(blogTitle.current) &&<Button buttonType={Type.SAVE} text="SAVE" onClick={newBlogAdd}></Button>}
+                {(blogTitle.current) && <Button buttonType={Type.SAVE} text="SAVE" onClick={newBlogAdd}></Button>}
             </ReactModal>
         </div>
 

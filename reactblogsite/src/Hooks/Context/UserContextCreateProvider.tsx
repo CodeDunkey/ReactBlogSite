@@ -12,7 +12,7 @@ export const UserContext = createContext<UserContextValue>({
 
 export const UserContextProvider = ({ children }: { children: ReactElement }) => {
     const [user, setUser] = useState<User>()
-    console.log("user.blog", user?.blog)
+    console.log("user in state: ", user)
     return (
         <UserContext.Provider value={{user, setUser}}>
             {children}

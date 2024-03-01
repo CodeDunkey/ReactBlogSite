@@ -3,16 +3,16 @@ import { Blog, User } from "../Types/Types";
 class ClientAPI {
 
     addUser = async (userName: string, password: string, email: string, firstName: string, lastName: string) => {
-        return serverAPI.addUser(userName, password, email, firstName, lastName)
+        return await serverAPI.addUser(userName, password, email, firstName, lastName)
     }
     validateUserAndPassword = async ( userName: string, password: string ) => {
-        return serverAPI.userVerification( userName, password );
+        return await serverAPI.userVerification( userName, password );
     }
     getBlogs = async () => {
-        return serverAPI.getBlogs();
+        return await serverAPI.getBlogs();
     }
     addNewBlog = async (blog: Blog, userName: string) => {
-         return serverAPI.addNewBlog(blog, userName)
+         return await serverAPI.addNewBlog(blog, userName)
     }
 }
 

@@ -106,28 +106,6 @@ export let Users: User[] = [
         createdDateTime: new Date().toLocaleString(),
         firstName: "no",
         lastName: "nono",
-        blog: [
-            {
-                userName: "no",
-                blogTitle: "My sport",
-                post: [
-                    {
-                        userName: "no",
-                        postTitle: "First Post",
-                        headLine: "First post from no world",
-                        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
-                        dateTimeStamp: new Date().toLocaleString()
-                    },
-                    {
-                        userName: "no",
-                        postTitle: "Second post",
-                        headLine: "Second post from no world",
-                        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae molestiae deserunt totam cumque iste perferendis asperiores dolorem dolore? Quas.",
-                        dateTimeStamp: new Date().toLocaleString()
-                    },
-                ],
-            }
-        ],
     },
 ]
 

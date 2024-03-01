@@ -6,15 +6,8 @@ import './PostCarousel.scss'
 export const PostCarousel = () => {
     const [blogAmound, setBlogAmound] = useState<number>(1);
     const { blogs } = useBlogs();
+    
     // console.log("blogs in PostCarousel", blogs)
-   
-
-    
-
-    function currentBlog(para: number) {
-        setBlogAmound(para)
-    }
-    
     
     const find = (blogAmound: number) => {
         setBlogAmound((blogAmound) => {

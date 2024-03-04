@@ -11,6 +11,12 @@ class ClientAPI {
     getBlogs = async () => {
         return await serverAPI.getBlogs();
     }
+    getPosts = async () => {
+        return await serverAPI.getPosts();
+    }
+    getComments = async () => {
+        return await serverAPI.getComments();
+    }
     addNewBlog = async (blog: Blog, userName: string) => {
          return await serverAPI.addNewBlog(blog, userName)
     }

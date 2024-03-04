@@ -1,7 +1,11 @@
 
 import { User, Blog, Post, Comment } from "../../../Types/Types"
 import { Users } from "../Database/Users"
+import { Blogs } from "../Database/Blogs";
 import { resolve } from "path";
+import { rejects } from "assert";
+import { Posts } from "../Database/Posts";
+import { Comments } from "../Database/Comments";
 
 class ServerAPI {
     addUser = async (userName: string, password: string, email: string, firstName: string, lastName: string) => {
@@ -29,11 +33,17 @@ class ServerAPI {
     }
 
     getBlogs = async () => {
-        const userBlogs = Users.flatMap((user) => {
-            return user.blog || []
-        })
+        // const userBlogs = Users.flatMap((user) => {
+        //     return user.blog || []
+        // })
 
-        return new Promise<Blog[]>((resolve, reject) => { resolve(userBlogs) })
+        return new Promise<Blog[]>((resolve, reject) => { resolve(Blogs) })
+    }
+    getPosts = async () => {
+        return new Promise<Post[]>((resolve, rejects) => {resolve(Posts)})
+    }
+    getComments = async () => {
+        return new Promise<Comment[]>((resolve, rejects) => {resolve(Comments)})
     }
     addNewBlog = async (blog: Blog, userName: string) => {
         

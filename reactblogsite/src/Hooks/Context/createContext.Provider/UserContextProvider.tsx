@@ -1,5 +1,5 @@
 import { ReactElement, createContext, useState } from "react";
-import { User } from "../../Types/Types";
+import { User } from "../../../Types/Types";
 
 export type UserContextValue = {
     user?: User,

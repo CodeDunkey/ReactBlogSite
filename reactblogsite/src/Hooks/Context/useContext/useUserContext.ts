@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { UserContext } from "./Context/UserContextCreateProvider"
-import { clientApi } from "../Utilities/ClientAPI";
+import { UserContext } from "../createContext.Provider/UserContextProvider"
+import { clientApi } from "../../../Utilities/ClientAPI";
 export const useUserContext = () => { 
     
 

@@ -1,8 +1,8 @@
 import { useState, useRef, KeyboardEvent, ChangeEvent } from "react"
 import ReactModal from "react-modal"
 import { Button, Type } from "../../../Button/Button"
-import { useUserContext } from "../../../../Hooks/useUserContext"
-import { useLogInSignUp } from "../../../../Hooks/useLogInSignUpContext"
+import { useUserContext } from "../../../../Hooks/Context/useContext/useUserContext"
+import { useLogInSignUp } from "../../../../Hooks/Context/useContext/useLogInSignUpContext"
 import { useAddNewBlog } from "../../../../Hooks/useAddNewBlog"
 import { Blog, Post, User } from "../../../../Types/Types"
 

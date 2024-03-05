@@ -51,26 +51,26 @@ class ServerAPI {
             userName: userName,
             blogTitle: blog.blogTitle,
         }
-        const findUserAddBlog = Users.find((user) => {
+        const findUserAddBlog = Blogs.find((blog) => {
 
-            if (user.userName === userName && user.blog !== undefined) {
-                user.blog.push(newBlog)
+            // if (blog.userName === userName) {
+            //     user.blog.push(newBlog)
                 
-                // const newUserObject = {...user}
-                // console.log("user === {...user}", user === newUserObject )
+            //     // const newUserObject = {...user}
+            //     // console.log("user === {...user}", user === newUserObject )
                 
-                // console.log('user', user);
-                // console.log('newUserObject', newUserObject);
-                // return newUserObject
-                return user
-            }
+            //     // console.log('user', user);
+            //     // console.log('newUserObject', newUserObject);
+            //     // return newUserObject
+            //     return user
+            // }
 
-            if (user.userName === userName && user.blog === undefined) {
-                user.blog = []
-                user.blog.push(newBlog)
+            // if (user.userName === userName && user.blog === undefined) {
+            //     user.blog = []
+            //     user.blog.push(newBlog)
                 
-                return user
-            }
+            //     return user
+            // }
         })
         // let userss =  Users.map((user)=>{return console.log("user === findUserAddBlog", user === findUserAddBlog ) })
         

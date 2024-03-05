@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useUserContext } from "../../../Hooks/useUserContext";
+import { useUserContext } from "../../../Hooks/Context/useContext/useUserContext";
 import { Blog } from "../../../Types/Types";
 
 export const UserLoggedInPosts = () => {

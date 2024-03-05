@@ -1,9 +1,9 @@
 import ReactModal from "react-modal";
-import { useUserContext } from "../../../../Hooks/useUserContext";
-import { useLogInSignUp } from "../../../../Hooks/useLogInSignUpContext";
+import { useUserContext } from "../../../../Hooks/Context/useContext/useUserContext";
+import { useLogInSignUp } from "../../../../Hooks/Context/useContext/useLogInSignUpContext";
 import { Button, Type } from "../../../Button/Button"
 import { ChangeEvent, KeyboardEvent, Dispatch, SetStateAction, useRef } from "react";
-import { UserContextValue } from "../../../../Hooks/Context/UserContextCreateProvider";
+import { UserContextValue } from "../../../../Hooks/Context/createContext.Provider/UserContextProvider";
 export const LogIn = () => {
 
     const { user, setUser, validateUserAndPassword } = useUserContext();

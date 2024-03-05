@@ -1,5 +1,5 @@
 import './MainWrapper.scss'
-import { useUserContext } from '../../../Hooks/useUserContext'
+import { useUserContext } from '../../../Hooks/Context/useContext/useUserContext'
 import { PostCarousel } from '../../PostCarousel/PostCarousel';
 import { UserLoggedInPosts } from './UserLoggedInBlogPosts';
 import { Button } from '../../Button/Button';

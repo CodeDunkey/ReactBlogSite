@@ -1,4 +1,4 @@
-import { useUserContext } from "../../../../Hooks/useUserContext"
+import { useUserContext } from "../../../../Hooks/Context/useContext/useUserContext"
 import './ShowUserLoggedIn.scss'
 export const ShowUserLoggedIn = () => {
     const { user } = useUserContext();

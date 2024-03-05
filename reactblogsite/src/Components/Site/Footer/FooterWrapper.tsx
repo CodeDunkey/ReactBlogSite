@@ -1,5 +1,5 @@
 import './FooterWrapper.scss'
-import { useUserContext } from '../../../Hooks/useUserContext'
+import { useUserContext } from '../../../Hooks/Context/useContext/useUserContext'
 export const FooterWrapper = () => {
     const {user} = useUserContext();
 

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { LogInSignUpContext } from "./Context/LogInSignUpContextCreateProvider";
+import { LogInSignUpContext } from "../createContext.Provider/LogInSignUpContextCreateProvider";
 
 export const useLogInSignUp = () => { 
     

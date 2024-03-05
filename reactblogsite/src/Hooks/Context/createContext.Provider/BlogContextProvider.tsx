@@ -1,4 +1,4 @@
-import { Blog } from "../../Types/Types";
+import { Blog } from "../../../Types/Types";
 import { ReactElement, createContext, useState } from "react"
 
 export type BlogContextValue = {

@@ -1,4 +1,4 @@
-import { Post } from "../../Types/Types";
+import { Post } from "../../../Types/Types";
 import { ReactElement, createContext, useState } from "react"
 
 export type PostContextValue = {
@@ -15,7 +15,8 @@ export const PostContextProvider = ({ children }: { children: ReactElement }) =>
     const [posts, setPosts] = useState<Post[]>([]);
     
     return (
-        
-        {children}
+        <PostContext.Provider value={{ posts, setPosts }}>
+            {children}
+        </PostContext.Provider>
     )
 }

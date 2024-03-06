@@ -1,5 +1,5 @@
 import { ShowUserLoggedIn } from "./ShowUserLoggedIn"
-import { NewBlog } from "./NewBlog"
+import { CreateNewBlog } from "./CreateNewBlog"
 import { SignUp } from "./SignUp"
 import { LogIn } from "./LogIn"
 import './HeaderMenu.scss'
@@ -7,10 +7,10 @@ import './HeaderMenu.scss'
 export const HeaderMenu = () => {
     return (
         <div className="headerMenu">
-            <NewBlog />
-            <ShowUserLoggedIn />
-            <SignUp />
-            <LogIn />
+            <div className="headerMenuItem"><CreateNewBlog /></div>
+            <div className="headerMenuItem"><ShowUserLoggedIn /></div>
+            <div className="headerMenuItem"><SignUp /></div>
+            <div className="headerMenuItem"><LogIn /></div>
         </div>
     )
 }

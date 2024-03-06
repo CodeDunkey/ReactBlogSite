@@ -6,6 +6,7 @@ export enum Type {
     SIGNUP = "signUp",
     RED = "red",
     BLOG = "blog",
+    POST = "post",
     SAVE = "save",
     EXIT = "exit",
 }

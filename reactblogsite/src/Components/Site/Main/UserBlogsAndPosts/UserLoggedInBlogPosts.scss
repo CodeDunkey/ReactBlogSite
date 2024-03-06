@@ -1,0 +1,20 @@
+.blogs{
+    border-radius: 5px;
+    margin: 15px;
+    padding: 10px;
+    background-image: linear-gradient(lightgrey, rgb(138, 155, 161) );
+    color: darkslategrey;
+    // box-shadow: 0px 0px 10px 1px lightblue, inset 0px 0px 10px 1px lightblue;
+    cursor: pointer;
+    
+}
+.headLineForBlogs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.blogLinkStyle{
+    text-decoration: none;
+}

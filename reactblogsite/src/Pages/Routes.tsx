@@ -1,0 +1,31 @@
+import { Route, Routes, Link} from "react-router-dom"
+import { Home } from "./Home"
+import { Blog } from "./Blog"
+import { Post } from "./Post"
+import { useBlogs } from "../Hooks/useBlogs"
+import { usePosts } from "../Hooks/usePosts"
+export const AppRoutes = () => {
+    const {blogs} = useBlogs()
+    const {posts} = usePosts()
+    const blogPath = blogs.map((blog) => {
+        return <Route path={`/Blog/(${blog.blogTitle})`} element={<Blog blogTitle={blog.blogTitle}/>}/>
+    })
+    const blogPostPath = blogs.map((blog) => {
+        
+        const postPath = posts.map((post) => {
+
+            return <Route path={`/Blog/(${blog.blogTitle})/Post/(${post.postTitle})`} element={<Post postTitle={post.postTitle} blogTitle={blog.blogTitle}/>}/>
+        })
+        return postPath
+    })
+    return (
+        <div>
+            <Routes>
+                <Route path="/Home" element={<Home />}/>
+                {blogPath}
+                {blogPostPath}
+            </Routes>
+        </div>
+    )
+}
+//

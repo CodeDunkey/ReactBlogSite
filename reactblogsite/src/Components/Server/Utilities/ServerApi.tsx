@@ -46,39 +46,20 @@ class ServerAPI {
         return new Promise<Comment[]>((resolve, rejects) => {resolve(Comments)})
     }
     addNewBlog = async (blog: Blog, userName: string) => {
-        
+        const findUser = Users.find((user) => {
+            if(userName === user.userName){
+                return user
+            }
+        })
         const newBlog: Blog = {
             userName: userName,
             blogTitle: blog.blogTitle,
         }
-        const findUserAddBlog = Blogs.find((blog) => {
-
-            // if (blog.userName === userName) {
-            //     user.blog.push(newBlog)
-                
-            //     // const newUserObject = {...user}
-            //     // console.log("user === {...user}", user === newUserObject )
-                
-            //     // console.log('user', user);
-            //     // console.log('newUserObject', newUserObject);
-            //     // return newUserObject
-            //     return user
-            // }
-
-            // if (user.userName === userName && user.blog === undefined) {
-            //     user.blog = []
-            //     user.blog.push(newBlog)
-                
-            //     return user
-            // }
-        })
-        // let userss =  Users.map((user)=>{return console.log("user === findUserAddBlog", user === findUserAddBlog ) })
-        
-        // console.log("findUserAddBlog in server", findUserAddBlog)
+        Blogs.push(newBlog)
+       
         return new Promise<User | undefined>((resolve, reject) => {
-            resolve(findUserAddBlog)
+            resolve(findUser)
         })
     }
-
 }
 export const serverAPI = new ServerAPI(); 

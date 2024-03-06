@@ -5,16 +5,6 @@
     border-radius: 10px;
     // box-shadow: 0px 0px 5px 1px lightgrey;
     overflow: scroll;
-
-
-    .Posts{
-        border-radius: 5px;
-        margin: 15px;
-        padding: 10px;
-        background-image: linear-gradient(lightgrey, rgb(138, 155, 161) );
-        color: darkslategrey;
-        // box-shadow: 0px 0px 10px 1px lightblue, inset 0px 0px 10px 1px lightblue;
-    }
 }
 .mainWrapper::-webkit-scrollbar{
         display:none;

@@ -30,7 +30,7 @@
     margin: 2.5px;
     border: 0;
     border-radius: 30px;
-    box-shadow: 0px 0px 4px 1px black; 
+    box-shadow: 0px 0px 2px 1px black; 
 }
 .button__logIn:hover {
     // border: 5px solid blue;
@@ -52,7 +52,7 @@
     margin: 2.5px;
     border: 0;
     border-radius: 30px;
-    box-shadow: 0px 0px 4px 1px black; 
+    box-shadow: 0px 0px 2px 1px black; 
 }
 .button__signUp:hover {
     // border: 5px solid blue;
@@ -133,6 +133,30 @@
     box-shadow: 0px 0px 4px 1px black; 
 }
 .button__blog:hover {
+    // border: 5px solid blue;
+    box-shadow: 0px 0px 10px 1px black; 
+    // background: #ed0000;
+}
+.button__post{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    // font-size: 30px;
+    cursor: pointer;
+    background-image: linear-gradient(180deg, #0076d1, #011377);
+    width: 80px;
+    height: 30px;
+    // border-radius: 1px;
+    // border: 0;
+    
+    margin: 2.5px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px black; 
+}
+.button__post:hover {
     // border: 5px solid blue;
     box-shadow: 0px 0px 10px 1px black; 
     // background: #ed0000;

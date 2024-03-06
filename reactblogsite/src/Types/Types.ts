@@ -5,6 +5,7 @@ export interface Comment {
 }
 export interface Post {
     userName: string,
+    blogTitle: string,
     dateTimeStamp: string
     postTitle: string,
     headLine: string,

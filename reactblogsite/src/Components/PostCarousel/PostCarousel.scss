@@ -1,56 +1,62 @@
-.postCarouselWrapper{
-    display: flex;
-    justify-content: center;
-    // border: 1px solid blue;
+.postCarouselWrapper {
+  display: flex;
+  justify-content: center;
+  // border: 1px solid blue;
 }
-.postCarousel {
-    position: relative;
-    height: 250px;
-    width: 100%;
-    // display: flex;
-    // justify-content: center;
-    // background-image: linear-gradient(white, lightgrey);
-    // margin: 15px;
-    // border: 1px solid black;
-    padding: 25px;
-    // border: 1px solid darkslategrey;
-    border-radius: 10px;
-    box-shadow:  inset 0px 0px 30px 20px lightgrey; // 0px 0px 10px 1px black,
-    // user-select: none;
-    
-}
-.prev, .next {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
-    
-    width: 30px;
-    height: 60px;
-    
-    // padding: 16px;
-    // margin-top: -22px;
-    color: white;
-    // font-weight: bold;
-    // font-size: 18px;
-    transition: 0.2s ease;
-    // border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0,0,0,0.07)
-  }
-  
-  /* Position the "next button" to the right */
 
-  .prev {
-    left: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.6);
-  }
+.postCarousel {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  // display: flex;
+  // justify-content: center;
+  background-image: linear-gradient(white, lightgrey);
+  // margin: 15px;
+  // border: 1px solid black;
+  padding: 25px;
+  // border: 1px solid darkslategrey;
+  border-radius: 10px;
+  // box-shadow: inset 0px 0px 30px 20px lightgrey; // 0px 0px 10px 1px black,
+  // user-select: none;
+
+}
+
+.prev,
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+
+  width: 30px;
+  height: 60px;
+
+  // padding: 16px;
+  // margin-top: -22px;
+  color: white;
+  // font-weight: bold;
+  // font-size: 18px;
+  transition: 0.2s ease;
+  // border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.07)
+}
+
+/* Position the "next button" to the right */
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}

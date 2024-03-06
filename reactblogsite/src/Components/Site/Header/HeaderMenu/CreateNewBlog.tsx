@@ -6,7 +6,7 @@ import { useLogInSignUp } from "../../../../Hooks/Context/useContext/useLogInSig
 import { useAddNewBlog } from "../../../../Hooks/useAddNewBlog"
 import { Blog, Post, User } from "../../../../Types/Types"
 
-export const NewBlog = () => {
+export const CreateNewBlog = () => {
     const [newBlog, setNewBlog] = useState<boolean>(false)
     const { user, setUser } = useUserContext()
     const { keyDown, setKeyDown } = useLogInSignUp()
@@ -35,18 +35,19 @@ export const NewBlog = () => {
         if (blogTitle.current !== undefined && user) {
             addBlogToUser = undefined
             console.log("addBlogToUser after being undefined: ", addBlogToUser)
-            let newPost: Post = {
-                userName: user.userName,
-                postTitle: "",
-                headLine: "",
-                text: "",
-                dateTimeStamp: new Date().toLocaleString(),
-            }
             let blog: Blog = {
                 userName: user.userName,
                 blogTitle: blogTitle.current,
                 // post?: newPost, 
             }
+            // let newPost: Post = {
+            //     userName: user.userName,
+            //     blogTitle: blogTitle.current,
+            //     postTitle: "",
+            //     headLine: "",
+            //     text: "",
+            //     dateTimeStamp: new Date().toLocaleString(),
+            // }
             addBlogToUser = await addNewBlog({ blog: blog, userName: user.userName })
             // console.log("addBlogToUser after being initialised: ", addBlogToUser)
 
@@ -109,7 +110,7 @@ export const NewBlog = () => {
                 <input id="first name" onChange={textinputFirstName} onKeyDown={keyPress} placeholder='First name'></input>
                 <br></br>
                 <label htmlFor="Last name" >Last name</label>
-            <input id="Last name" onChange={textinputLastName} onKeyDown={keyPress} placeholder='Last name'></input> */}
+                <input id="Last name" onChange={textinputLastName} onKeyDown={keyPress} placeholder='Last name'></input> */}
 
                 {(blogTitle.current) && <Button buttonType={Type.SAVE} text="SAVE" onClick={newBlogAdd}></Button>}
             </ReactModal>

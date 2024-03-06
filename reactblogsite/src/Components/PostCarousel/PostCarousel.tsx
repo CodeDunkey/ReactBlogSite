@@ -22,7 +22,7 @@ export const PostCarousel = () => {
                 if (blog.userName === post.userName) {
                     return (
                         <div>
-                            <h2>{post.headLine}</h2>
+                            <h2>{post.postTitle}</h2>
                             <h5>{post.text}</h5>
                         </div>
                     )

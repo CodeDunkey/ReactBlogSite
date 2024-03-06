@@ -21,6 +21,7 @@ export const AppRoutes = () => {
     return (
         <div>
             <Routes>
+                <Route index element={<Home />}/>
                 <Route path="/Home" element={<Home />}/>
                 {blogPath}
                 {blogPostPath}

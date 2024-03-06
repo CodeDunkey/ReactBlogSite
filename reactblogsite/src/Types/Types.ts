@@ -8,7 +8,6 @@ export interface Post {
     blogTitle: string,
     dateTimeStamp: string
     postTitle: string,
-    headLine: string,
     text: string,
 }
 export interface Blog {

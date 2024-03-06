@@ -18,7 +18,7 @@ export const UserLoggedInPosts = () => {
                 if (user.userName === post.userName && blog.blogTitle === post.blogTitle) {
                     return (
                         <>
-                            <h3>{post.headLine}</h3>
+                            <h3>{post.postTitle}</h3>
                             {post.text}
                         </>
                     )

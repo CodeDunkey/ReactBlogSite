@@ -6,24 +6,24 @@ export const PostPage = ({ postTitle, blogTitle }: { postTitle: string, blogTitl
     const { user } = useUserContext()
     const { posts } = usePosts()
     const { blogs } = useBlogs()
-    const blog = blogs.map((blog) => {
-        
-        const post = posts.map((post) => {
-            
-            if (blog.userName === user?.userName || blog.blogTitle === blogTitle || postTitle === post.postTitle) {
-                    console.log('post', post.postTitle);
-                    
-                    return (
-                        <div>
-                            <h1>Headline: {post.headLine}</h1>
-                            <h2>{post.text}</h2>
-                        </div>
-                    )
-                }
 
-            })
-            return post
-        
+
+    const blog = blogs.map((blog) => {
+        if (blog.userName === user?.userName) {
+            if (blog.blogTitle === blogTitle) {
+                const post = posts.map((post) => {
+                    if (blog.userName === post.userName && post.blogTitle === blogTitle && post.postTitle === postTitle) {
+                        return (
+                            <div>
+                                <h1>Headline: {post.postTitle}</h1>
+                                <h2>Post Text: {post.text}</h2>
+                            </div>
+                        )
+                    }
+                })
+                return post
+            }
+        }
     })
 
     return (
@@ -32,3 +32,4 @@ export const PostPage = ({ postTitle, blogTitle }: { postTitle: string, blogTitl
         </div>
     )
 }
+

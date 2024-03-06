@@ -11,10 +11,10 @@ export let Blogs: Blog[] = [
     },
     {
         userName: "ww",
-        blogTitle: "My hobbies",
+        blogTitle: "BlogTitle: First Blog",
     },
     {
         userName: "ww",
-        blogTitle: "My second blog",
+        blogTitle: "BlogTitle: Second blog",
     },
 ]

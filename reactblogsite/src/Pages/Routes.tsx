@@ -8,13 +8,13 @@ export const AppRoutes = () => {
     const {blogs} = useBlogs()
     const {posts} = usePosts()
     const blogPath = blogs.map((blog) => {
-        return <Route path={`/Blog/(${blog.blogTitle})`} element={<Blog blogTitle={blog.blogTitle}/>}/>
+        return <Route path={`/Blog/(${blog.blogTitle})`} element={<Blog blogTitle={blog.blogTitle} blogUserName={blog.userName}/>}/>
     })
     const blogPostPath = blogs.map((blog) => {
         
         const postPath = posts.map((post) => {
 
-            return <Route path={`/Blog/(${blog.blogTitle})/Post/(${post.postTitle})`} element={<Post postTitle={post.postTitle} blogTitle={blog.blogTitle}/>}/>
+            return <Route path={`/Blog/(${blog.blogTitle})/Post/(${post.postTitle})`} element={<Post postTitle={post.postTitle} blogTitle={blog.blogTitle} blogUserName={blog.userName}/>}/>
         })
         return postPath
     })

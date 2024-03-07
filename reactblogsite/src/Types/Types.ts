@@ -1,7 +1,11 @@
 export interface Comment {
     userName: string,
-    dateTimeStamp: string,
+    blogTitle: string,
+    postTitle: string,
+    fromUser: string,
+    
     comment: string,
+    dateTimeStamp: string,
 }
 export interface Post {
     userName: string,
@@ -23,15 +27,4 @@ export interface User {
     firstName: string,
     lastName: string,
     userName: string,
-    blog?: Blog[],
-    comments?: Comment[],
 }
-
-// export interface Post {
-//     userName: string,
-//     blogTitle: string,
-//     dateTimeStamp: string
-//     postTitle: string,
-//     headLine: string,
-//     text: string,
-// }

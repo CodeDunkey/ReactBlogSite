@@ -1,10 +1,10 @@
 import { HeaderWrapper } from "../Components/Site/Header/HeaderWrapper/HeaderWrapper"
-import { PostPage } from "../Components/BlogPage/PostPage/PostPage"
-export const Post = ({postTitle, blogTitle}: {postTitle: string, blogTitle: string}) => {
+import { PostPage } from "../Components/PostPage/PostPage"
+export const Post = ({postTitle, blogTitle, blogUserName}: {postTitle: string, blogTitle: string, blogUserName: string }) => {
     return (
         <div>
             <HeaderWrapper />
-            <PostPage  postTitle={postTitle} blogTitle={blogTitle}/>
+            <PostPage  postTitle={postTitle} blogTitle={blogTitle} blogUserName={blogUserName}/>
         </div>
     )
 }

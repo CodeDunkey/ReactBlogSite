@@ -1,28 +1,106 @@
 .postCarouselWrapper {
-  display: flex;
-  justify-content: center;
-  // border: 1px solid blue;
-}
-
-.postCarousel {
   position: relative;
-  height: 250px;
-  width: 100%;
-  // display: flex;
+  display: flex;
   // justify-content: center;
-  background-image: linear-gradient(white, lightgrey);
-  // margin: 15px;
-  // border: 1px solid black;
-  padding: 25px;
-  // border: 1px solid darkslategrey;
-  border-radius: 10px;
-  // box-shadow: inset 0px 0px 30px 20px lightgrey; // 0px 0px 10px 1px black,
-  // user-select: none;
+  width: 1200px;
+  height: 300px;
+  // box-shadow: 0px 0px 30px 10px darkslategrey; // 0px 0px 10px 1px black,  border-radius: 10px;
+  overflow: hidden;
+  
+  // padding: 25px;
+  .postCarousel {
+    
+    display: flex;
+    flex-direction: row;
+    // padding: 25px;
+    justify-content: center;
+    border-radius: 10px;
+    // border: 1px solid purple;
+    // overflow: hidden;
+    // left: 50%;
+
+    .post1 {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 250px;
+      // height: 100%;
+      width: 1150px;
+      // display: flex;
+      // justify-content: center;
+      background-image: linear-gradient(white, lightgrey);
+      // margin: 15px;
+      // border: 1px solid black;
+      padding: 25px;
+      // border: 1px solid rgb(42, 47, 47);
+      border-radius: 10px;
+      // box-shadow: inset 0px 0px 30px 20px lightgrey; // 0px 0px 10px 1px black,
+      // user-select: none;
+      text-decoration: none;
+    }
+
+    .post2 {
+      display: flex;
+  flex-direction: column;
+      position: relative;
+      height: 250px;
+      width: 1150px;
+      // display: flex;
+      // justify-content: center;
+      background-image: linear-gradient(white, lightgrey);
+      // margin: 15px;
+      // border: 1px solid black;
+      padding: 25px;
+      // border: 1px solid darkslategrey;
+      border-radius: 10px;
+      // box-shadow: inset 0px 0px 30px 20px lightgrey; // 0px 0px 10px 1px black,
+      // user-select: none;
+      text-decoration: none;
+    }
+
+    @media screen {
+      .post1 {
+        animation: post1 infinite 6000ms ;
+      }
+    }
+
+    @keyframes post1 {
+      0% {
+        transform: translateX(0px);
+      }
+      70% {
+        transform: translateX(0px);
+      }
+      
+      100% {
+        transform: translateX(-1200px);
+      }
+    }
+
+    @media screen {
+      .post2 {
+        animation: post2 infinite 6000ms ;
+      }
+    }
+
+    @keyframes post2 {
+      0% {
+        transform: translateX(0px);
+      }
+      70% {
+        transform: translateX(0px);
+      }
+
+      100% {
+        transform: translateX(-1200px);
+      }
+    }
+  }
+}
+.blogFrom{
 
 }
-
-.prev,
-.next {
+.prev, .next {
   display: flex;
   align-items: center;
   justify-content: center;

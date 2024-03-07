@@ -1,0 +1,13 @@
+.postPageWrapper{
+    margin-top: 10px;
+    width: 1150px;
+    background-image: linear-gradient(lightblue, white);
+    padding: 25px;
+    border-radius: 10px;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 5px;
+}

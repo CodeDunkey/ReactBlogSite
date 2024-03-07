@@ -62,7 +62,23 @@ class ServerAPI {
         })
     }
     addNewPost = async (blogTitle: string, userName: string, post: Post) => {
-        
+        const findUser = Users.find((user) => {
+            if(userName === user.userName){
+                return user
+            }
+        })
+        const newPost: Post = {
+            userName: userName,
+            blogTitle: blogTitle,
+            postTitle: post.postTitle,
+            text: post.text,
+            dateTimeStamp: post.dateTimeStamp,
+        }
+        Posts.push(newPost)
+
+        return new Promise<User | undefined>((resolve, reject) => {
+            resolve(findUser)
+        })
     }
 }
 export const serverAPI = new ServerAPI(); 

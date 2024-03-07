@@ -61,5 +61,8 @@ class ServerAPI {
             resolve(findUser)
         })
     }
+    addNewPost = async (blogTitle: string, userName: string, post: Post) => {
+        
+    }
 }
 export const serverAPI = new ServerAPI(); 

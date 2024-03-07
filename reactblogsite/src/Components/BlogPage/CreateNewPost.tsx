@@ -1,19 +1,19 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ReactModal from 'react-modal';
+import { useUserContext } from '../../Hooks/Context/useContext/useUserContext';
 import { Button } from '../Button/Button';
 import { Type } from '../Button/Button';
 import './CreateNewPost.scss'
-export const CreateNewPost = () => {
+
+export const CreateNewPost = ({blogTitle, userName}:{blogTitle: string, userName: string}) => {
+    
     const [newPost, setNewPost] = useState<boolean>(false);
 
-    // const { user, setUser } = useUserContext()
-    // const { keyDown, setKeyDown } = useLogInSignUp()
-    // const { addNewBlog } = useAddNewBlog()
-    // let blogTitle = useRef<string>()
-    // let postTitle = useRef<string>()
-    // let inputEmail = useRef<string>()
-    // let inputFirstName = useRef<string>()
-    // let inputLastName = useRef<string>()
+    const { user, setUser } = useUserContext()
+    
+    let postTitle = useRef<string>()
+    let text = useRef<string>()
+    
     // const toggleNewBlog = () => {
     //     if (!user) {
     //         alert("You must be logged in to create a blog");
@@ -25,7 +25,9 @@ export const CreateNewPost = () => {
     //         postTitle.current = undefined;
     //     }
     // }
-    
+    const toggleNewPost = () => {
+        setNewPost(!newPost)
+    }
     // const newBlogAdd = async () => {
 
     //     let addBlogToUser;
@@ -42,7 +44,7 @@ export const CreateNewPost = () => {
     //         //     userName: user.userName,
     //         //     blogTitle: blogTitle.current,
     //         //     postTitle: "",
-    //         //     headLine: "",
+    
     //         //     text: "",
     //         //     dateTimeStamp: new Date().toLocaleString(),
     //         // }
@@ -77,9 +79,7 @@ export const CreateNewPost = () => {
     //     blogTitle.current = x.target.value;
     // }
 
-    const toggleNewPost = () => {
-        setNewPost(!newPost)
-    }
+    
     return (
         <div>
             <Button text='Create new post' buttonType={Type.POST} onClick={toggleNewPost} />

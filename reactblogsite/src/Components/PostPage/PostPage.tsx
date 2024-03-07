@@ -7,13 +7,41 @@ export const PostPage = ({ postTitle, blogTitle, blogUserName }: { postTitle: st
     const { user } = useUserContext()
     const { posts } = usePosts()
     const { comments } = useComments()
-    console.log('postTitle', postTitle);
-    console.log('blogTitle', blogTitle);
-    console.log('blogUserName', blogUserName);
+    // console.log('postTitle', postTitle);
+    // console.log('blogTitle', blogTitle);
+    // console.log('blogUserName', blogUserName);
+    let numberArray = [
+        "1",
+        "8",
+        "4",
+        "2",
+        "9",
+        "3",
+        "7",
+        "5",
+        "6",
+        "18",
+        "10",
+    ];
+    let sortedNumberArray: string[] = [];
+    const sortingTheNumberArray = () => {
+        const numberArrayMap = numberArray.map((number: string) => {
+            
+            if (number > "0"){
+                sortedNumberArray.push(number)
+            }
+            
+            console.log(number)
+        })
+        console.log(numberArray);
+
+    }
+    sortingTheNumberArray();
+    console.log('sortedNumberArray', sortedNumberArray);
     const postComments = comments.map((comment, index) => {
         if (comment.userName === blogUserName && comment.postTitle === postTitle && comment.blogTitle === blogTitle){
-            console.log('dateTimeStamp', comment.dateTimeStamp, index);
-            console.log('dateTimeStamp', comment.dateTimeStamp, index === 1);
+            // console.log('dateTimeStamp', comment.dateTimeStamp, index);
+            // console.log('dateTimeStamp', comment.dateTimeStamp, index === 1);
             
             // if (){
 

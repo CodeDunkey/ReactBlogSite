@@ -1,5 +1,5 @@
 import { serverAPI } from "../Components/Server/Utilities/ServerApi";
-import { Blog, User, Post } from "../Types/Types";
+import { Blog, Comment, Post } from "../Types/Types";
 class ClientAPI {
 
     addUser = async (userName: string, password: string, email: string, firstName: string, lastName: string) => {
@@ -22,6 +22,9 @@ class ClientAPI {
     }
     addNewPost = async (blogTitle: string, userName: string, post: Post) => {
          return await serverAPI.addNewPost(blogTitle, userName, post)
+    }
+    addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
+         return await serverAPI.addNewComment(blogTitle, postTitle, userName, comment)
     }
 }
 

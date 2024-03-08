@@ -40,14 +40,14 @@ class ServerAPI {
         return new Promise<Blog[]>((resolve, reject) => { resolve(Blogs) })
     }
     getPosts = async () => {
-        return new Promise<Post[]>((resolve, rejects) => {resolve(Posts)})
+        return new Promise<Post[]>((resolve, rejects) => { resolve(Posts) })
     }
     getComments = async () => {
-        return new Promise<Comment[]>((resolve, rejects) => {resolve(Comments)})
+        return new Promise<Comment[]>((resolve, rejects) => { resolve(Comments) })
     }
     addNewBlog = async (blog: Blog, userName: string) => {
         const findUser = Users.find((user) => {
-            if(userName === user.userName){
+            if (userName === user.userName) {
                 return user
             }
         })
@@ -56,14 +56,14 @@ class ServerAPI {
             blogTitle: blog.blogTitle,
         }
         Blogs.push(newBlog)
-       
+
         return new Promise<User | undefined>((resolve, reject) => {
             resolve(findUser)
         })
     }
     addNewPost = async (blogTitle: string, userName: string, post: Post) => {
         const findUser = Users.find((user) => {
-            if(userName === user.userName){
+            if (userName === user.userName) {
                 return user
             }
         })
@@ -80,5 +80,27 @@ class ServerAPI {
             resolve(findUser)
         })
     }
+    addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
+        const findUser = Users.find((user) => {
+            if (userName === user.userName) {
+                return user
+            }
+        })
+        console.log('comment in serverApi', comment);
+        const newComment: Comment = {
+            userName: userName,
+            blogTitle: blogTitle,
+            postTitle: postTitle,
+            fromUser: comment.fromUser,
+            comment: comment.comment,
+            dateTimeStamp: comment.dateTimeStamp,
+        }
+        Comments.push(newComment)
+
+        return new Promise<Comment[]>((resolve, reject) => {
+            resolve(Comments)
+        })
+    }
+
 }
 export const serverAPI = new ServerAPI(); 

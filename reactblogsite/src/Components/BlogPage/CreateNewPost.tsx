@@ -1,10 +1,9 @@
-import { useState, useRef, ChangeEvent, KeyboardEvent, TextareaHTMLAttributes, EventHandler, ChangeEventHandler } from 'react'
+import { useState, useRef, ChangeEvent, KeyboardEvent } from 'react'
 import ReactModal from 'react-modal';
 import { useUserContext } from '../../Hooks/Context/useContext/useUserContext';
 import { useLogInSignUp } from '../../Hooks/Context/useContext/useLogInSignUpContext';
 import { useAddNewPost } from '../../Hooks/useAddNewPost';
-import { Button } from '../Button/Button';
-import { Type } from '../Button/Button';
+import { Button, Type } from '../Button/Button';
 import { Post } from '../../Types/Types';
 import './CreateNewPost.scss'
 
@@ -12,29 +11,18 @@ export const CreateNewPost = ({ blogTitle, userName }: { blogTitle: string, user
 
     const [newPost, setNewPost] = useState<boolean>(false);
     const { addNewPost } = useAddNewPost()
-    const { keyDown, setKeyDown } = useLogInSignUp()
-    const { user, setUser } = useUserContext()
+    const { setKeyDown } = useLogInSignUp()
+    const { setUser } = useUserContext()
 
     let postTitle = useRef<string>()
     let text = useRef<string>()
 
-    // const toggleNewBlog = () => {
-    //     if (!user) {
-    //         alert("You must be logged in to create a blog");
-    //         // setNewBlog(false)
-    //     }
-    //     if (user) {
-    //         setNewBlog(!newBlog)
-    //         blogTitle.current = undefined;
-    //         postTitle.current = undefined;
-    //     }
-    // }
     const toggleNewPost = () => {
         setNewPost(!newPost)
     }
     const newPostAdd = async () => {
 
-        let addPostToBlog = undefined;
+        let userAddPostToBlog = undefined;
 
         if (postTitle.current !== undefined && text.current !== undefined) {
 
@@ -46,39 +34,20 @@ export const CreateNewPost = ({ blogTitle, userName }: { blogTitle: string, user
                 dateTimeStamp: new Date().toLocaleString()
             }
 
-            addPostToBlog = await addNewPost({ blogTitle: blogTitle, userName: userName, post: post })
+            userAddPostToBlog = await addNewPost({ blogTitle: blogTitle, userName: userName, post: post })
 
-            if (addPostToBlog !== undefined) {
-                // console.log("works")
-                // console.log("user === addBlogToUser in newBlogAdd", user === addBlogToUser )
-                setUser({ ...addPostToBlog })
+            if (userAddPostToBlog !== undefined) {
+                
+                setUser({ ...userAddPostToBlog })
             }
         }
-        // let newPost: Post = {
-        //     userName: user.userName,
-        //     blogTitle: blogTitle.current,
-        //     postTitle: "",
-
-        //     text: "",
-        //     dateTimeStamp: new Date().toLocaleString(),
-        // }
-        // console.log("addBlogToUser after being initialised: ", addBlogToUser)
-
-
-
-        // console.log("addNewBlogAndReturnUser:", addBlogToUser)
 
         text.current = undefined;
         postTitle.current = undefined;
 
-
         // activates the modal
         setNewPost(!newPost)
-
-
     }
-    // // console.log("user in newBlog: ", user)
-
 
     const keyPress = (event: KeyboardEvent<HTMLInputElement>) => {
         setKeyDown(event.key)
@@ -89,7 +58,6 @@ export const CreateNewPost = ({ blogTitle, userName }: { blogTitle: string, user
     const textPostText = (x: ChangeEvent<HTMLTextAreaElement>) => {
         text.current = x.target.value;
     }
-
 
     return (
         <div>

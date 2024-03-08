@@ -25,7 +25,7 @@ export const BlogPage = ({ blogTitle, blogUserName }: { blogTitle: string, blogU
         <div className='blogPageWrapper'>
             <div className='BlogHeaderWrapper'>
                 <div className='blogheaderItem'><div></div></div>
-                <div className='blogheaderItem'><h1>Blog: {blogTitle}</h1></div>
+                <div className='blogheaderItem'><h1>Blog: {blogTitle} By: {blogUserName}</h1></div>
                 <div className='blogheaderItem'>{user?.userName === blogUserName && <CreateNewPost blogTitle={blogTitle} userName={userName}/>}</div>
             </div>
             <div className='BlogPostsWrapper'>{blogPosts}</div>

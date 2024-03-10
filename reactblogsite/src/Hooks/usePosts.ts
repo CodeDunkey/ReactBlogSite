@@ -5,7 +5,6 @@ import { usePostContext } from "./Context/useContext/usePostContext";
 import { useCommentContext } from "./Context/useContext/useCommentContext";
 export const usePosts = () => {
     const { posts, setPosts } = usePostContext();
-    const { comments, setComments } = useCommentContext();
     const { user } = useUserContext();
     
     useEffect(()=>{
@@ -14,7 +13,7 @@ export const usePosts = () => {
             setPosts(userPosts)
         }
         getPosts();
-    },[user, comments])
+    },[user])
     return {
         posts,
     }

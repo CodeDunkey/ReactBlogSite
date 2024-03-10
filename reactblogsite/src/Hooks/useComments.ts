@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { clientApi } from "../Utilities/ClientAPI";
 import { useCommentContext } from "./Context/useContext/useCommentContext";
 import { useUserContext } from "./Context/useContext/useUserContext";
@@ -12,7 +12,7 @@ export const useComments = () => {
             setComments(userComments)
         }
         getComments();
-    },[user, comments])
+    },[user])
     return {
         comments,
     }

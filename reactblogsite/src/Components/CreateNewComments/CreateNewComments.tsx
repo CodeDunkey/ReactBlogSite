@@ -8,7 +8,7 @@ import { useAddNewComment } from '../../Hooks/useAddNewComment'
 import { useUserContext } from '../../Hooks/Context/useContext/useUserContext'
 import { useCommentContext } from '../../Hooks/Context/useContext/useCommentContext'
 
-export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { postTitle: string, blogTitle: string, blogUserName: string }) => {
+export const CreateNewComments = ({ postTitle, blogTitle, blogUserName, newCommentToThePost, setNewCommentToThePost}: { postTitle: string, blogTitle: string, blogUserName: string, newCommentToThePost: boolean, setNewCommentToThePost: React.Dispatch<React.SetStateAction<boolean>>}) => {
     
     const [newComment, setNewComment] = useState<boolean>(false); 
     const { setKeyDown } = useLogInSignUp()
@@ -41,13 +41,14 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { post
 
             if (addCommentToPost !== undefined) {
                 console.log("addCommentToPost in createComment.tsx", addCommentToPost)
-                setComments([ ...addCommentToPost ])
+                setUser({ ...addCommentToPost })
             }
         }
 
         commentText.current = undefined;
 
         // activates the modal
+        setNewCommentToThePost(!newCommentToThePost)
         setNewComment(!newComment)
     }
 
@@ -55,18 +56,22 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { post
         setKeyDown(event.key)
     }
    
-    const textCommentText = (x: ChangeEvent<HTMLTextAreaElement>) => {
+    // const textCommentText = (x: ChangeEvent<HTMLTextAreaElement>) => {
+    //     commentText.current = x.target.value;
+    // }
+
+    const textCommentText = (x: ChangeEvent<HTMLInputElement>) => {
         commentText.current = x.target.value;
     }
-
     return (
         <div>
             <Button text='Create new comment' buttonType={Type.POST} onClick={toggleNewPost} />
             <ReactModal isOpen={newComment}>
                 <Button buttonType={Type.EXIT} text="X" onClick={toggleNewPost}></Button>
                 <h1>create a new comment</h1>
-                <label htmlFor="post text" >comment title:</label>
-                <textarea id="post text" onChange={textCommentText} onKeyDown={()=>keyPress} placeholder='comment text'/>
+                <label htmlFor="comment text" >comment title:</label>
+                <input id="comment title" onChange={textCommentText} onKeyDown={keyPress} placeholder='comment title'></input>
+                {/* <textarea id="post text" onChange={textCommentText} onKeyDown={()=>keyPress} placeholder='comment text'/> */}
                 <Button buttonType={Type.SAVE} text="SAVE" onClick={newCommentAdd}></Button>
             </ReactModal>
         </div>

@@ -86,7 +86,7 @@ class ServerAPI {
                 return user
             }
         })
-        console.log('comment in serverApi', comment);
+        // console.log('comment in serverApi', comment);
         const newComment: Comment = {
             userName: userName,
             blogTitle: blogTitle,
@@ -97,8 +97,8 @@ class ServerAPI {
         }
         Comments.push(newComment)
 
-        return new Promise<Comment[]>((resolve, reject) => {
-            resolve(Comments)
+        return new Promise<User | undefined>((resolve, reject) => {
+            resolve(findUser)
         })
     }
 

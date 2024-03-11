@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import './NavBar.scss'
-import { useUserContext } from "../../../../Hooks/Context/useContext/useUserContext"
+import { useUserContext } from "../../Hooks/Context/useContext/useUserContext"
 export const NavBar = () => {
     const { user } = useUserContext();
     return (

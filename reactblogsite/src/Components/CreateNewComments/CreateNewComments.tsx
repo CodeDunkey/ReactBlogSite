@@ -8,8 +8,10 @@ import { useAddNewComment } from '../../Hooks/useAddNewComment'
 import { useUserContext } from '../../Hooks/Context/useContext/useUserContext'
 import { useCommentContext } from '../../Hooks/Context/useContext/useCommentContext'
 
-export const CreateNewComments = ({ postTitle, blogTitle, blogUserName, newCommentToThePost, setNewCommentToThePost}: { postTitle: string, blogTitle: string, blogUserName: string, newCommentToThePost: boolean, setNewCommentToThePost: React.Dispatch<React.SetStateAction<boolean>>}) => {
-    
+export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { postTitle: string, blogTitle: string, blogUserName: string }) => {
+    console.log('postTitle in ', postTitle);
+    console.log('blogTitle', blogTitle);
+    console.log('blogUserName', blogUserName);
     const [newComment, setNewComment] = useState<boolean>(false); 
     const { setKeyDown } = useLogInSignUp()
     const { user, setUser } = useUserContext()
@@ -32,7 +34,7 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName, newComme
                 userName: blogUserName,
                 blogTitle: blogTitle,
                 postTitle: postTitle,
-                fromUser: user?.userName,
+                fromUser: user.userName,
                 comment: commentText.current,
                 dateTimeStamp: new Date().toLocaleString(),
             }
@@ -48,7 +50,7 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName, newComme
         commentText.current = undefined;
 
         // activates the modal
-        setNewCommentToThePost(!newCommentToThePost)
+        
         setNewComment(!newComment)
     }
 
@@ -65,7 +67,7 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName, newComme
     }
     return (
         <div>
-            <Button text='Create new comment' buttonType={Type.POST} onClick={toggleNewPost} />
+            <Button text='Make new comment' buttonType={Type.COMMENT} onClick={toggleNewPost} />
             <ReactModal isOpen={newComment}>
                 <Button buttonType={Type.EXIT} text="X" onClick={toggleNewPost}></Button>
                 <h1>create a new comment</h1>

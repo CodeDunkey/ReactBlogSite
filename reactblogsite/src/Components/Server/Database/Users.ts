@@ -38,9 +38,3 @@ export let Users: User[] = [
         lastName: "nono",
     },
 ]
-
-// export let Blogs: Blog[]
-
-// potst
-
-// comments 

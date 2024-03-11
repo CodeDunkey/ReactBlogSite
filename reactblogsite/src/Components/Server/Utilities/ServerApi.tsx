@@ -81,8 +81,9 @@ class ServerAPI {
         })
     }
     addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
+        
         const findUser = Users.find((user) => {
-            if (userName === user.userName) {
+            if (comment.fromUser === user.userName) {
                 return user
             }
         })
@@ -96,6 +97,36 @@ class ServerAPI {
             dateTimeStamp: comment.dateTimeStamp,
         }
         Comments.push(newComment)
+
+        return new Promise<User | undefined>((resolve, reject) => {
+            resolve(findUser)
+        })
+    }
+    addCommentToComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment, commmentToComment: Comment)=>{
+        const findUser = Users.find((user) => {
+            if (commmentToComment.fromUser === user.userName) {
+                return user
+            }
+        })
+        const newCommentToComment: Comment = {
+            userName: userName,
+            blogTitle: blogTitle,
+            postTitle: postTitle,
+            fromUser: commmentToComment.fromUser,
+            comment: commmentToComment.comment,
+            dateTimeStamp: commmentToComment.dateTimeStamp,
+        }
+        const findComment = Comments.find((element) => {
+            if (element === comment){
+                if (element.commentToComment === undefined){
+                    element.commentToComment = [];
+                }
+                if (element.commentToComment !== undefined){
+
+                    element.commentToComment.push(newCommentToComment)
+                }
+            }
+        })
 
         return new Promise<User | undefined>((resolve, reject) => {
             resolve(findUser)

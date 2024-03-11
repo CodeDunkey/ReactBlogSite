@@ -1,0 +1,23 @@
+.commentWrapper{
+    position: relative;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 15px 3px;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.commentToComment{
+    margin-left: 25px;
+    // border: 1px solid black;
+    padding: 5px;
+
+}
+.commentButtonPlacement{
+    position: absolute;
+    right: 30px;
+}

@@ -6,6 +6,7 @@ export interface Comment {
     
     comment: string,
     dateTimeStamp: string,
+    commentToComment?: Comment[],
 }
 export interface Post {
     userName: string,

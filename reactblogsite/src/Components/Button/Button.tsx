@@ -7,6 +7,7 @@ export enum Type {
     RED = "red",
     BLOG = "blog",
     POST = "post",
+    COMMENT = "comment",
     SAVE = "save",
     EXIT = "exit",
 }

@@ -8,6 +8,7 @@ class ClientAPI {
     validateUserAndPassword = async ( userName: string, password: string ) => {
         return await serverAPI.userVerification( userName, password );
     }
+
     getBlogs = async () => {
         return await serverAPI.getBlogs();
     }
@@ -17,6 +18,7 @@ class ClientAPI {
     getComments = async () => {
         return await serverAPI.getComments();
     }
+
     addNewBlog = async (blog: Blog, userName: string) => {
          return await serverAPI.addNewBlog(blog, userName)
     }
@@ -25,6 +27,9 @@ class ClientAPI {
     }
     addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
          return await serverAPI.addNewComment(blogTitle, postTitle, userName, comment)
+    }
+    addCommentToComment = async (blogTitle: string, postTitle: string, blogUserName: string, comment: Comment, commentToComment: Comment) => {
+        return await serverAPI.addCommentToComment(blogTitle, postTitle, blogUserName, comment, commentToComment)
     }
 }
 

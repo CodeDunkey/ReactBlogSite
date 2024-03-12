@@ -7,7 +7,7 @@ export const NavBar = () => {
         <>
             { (
                 <div className="navBarWrapper">
-                    <div className="navBarItem"><Link to="/Home">Home</Link></div>
+                    <div className="navBarItem"><Link to="/Home" className="linkStyle">Home</Link></div>
                     {/* <div className="navBarItem"><Link to="/Blog">Blog</Link></div> */}
                     {/* <div className="navBarItem"><Link to="/Post">Post</Link></div> */}
                 </div>)}

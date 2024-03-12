@@ -92,14 +92,15 @@ export const PostCarousel = () => {
                 }
             })
             return (
-                <>
-                    <Link to={`/Blog/(${blog.blogTitle})`} className="post1">
-                        <div className="blogFrom"><h1>Blog from {blog.userName}</h1></div>
-                        <div className="blogTitle"><h2>{blog.blogTitle}</h2></div>
-                        <div className="blogPosts">{blogPosts}</div>
-
+                
+                    <Link to={`/Blog/(${blog.blogTitle})`} className="blogLinkStyle">
+                        <div className="post1">
+                            <div className="blogFrom"><h1>Blog from {blog.userName}</h1></div>
+                            <div className="blogTitle"><h2>{blog.blogTitle}</h2></div>
+                            <div className="blogPosts">{blogPosts}</div>
+                        </div>
                     </Link>
-                </>
+                
             )
         }
     })
@@ -118,14 +119,15 @@ export const PostCarousel = () => {
                 }
             })
             return (
-                <>
-                    <Link to={`/Blog/(${blog.blogTitle})`} className="post2">
-                        <div className="blogFrom"><h1>Blog from {blog.userName}</h1></div>
-                        <div className="blogTitle"><h2>{blog.blogTitle}</h2></div>
-                        <div className="blogPosts">{blogPosts}</div>
-
+                
+                    <Link to={`/Blog/(${blog.blogTitle})`} className="blogLinkStyle">
+                        <div className="post2">
+                            <div className="blogFrom"><h1>Blog from {blog.userName}</h1></div>
+                            <div className="blogTitle"><h2>{blog.blogTitle}</h2></div>
+                            <div className="blogPosts">{blogPosts}</div>
+                        </div>
                     </Link>
-                </>
+            
             )
         }
     })

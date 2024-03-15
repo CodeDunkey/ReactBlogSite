@@ -22,7 +22,38 @@ class ServerAPI {
         Users.push(newUser)
         return new Promise<User | undefined>((resolve) => { resolve(newUser) })
     }
+    editUserInfo = async (user: User, userInfoEdited: User) => {
+        let filterUsers = Users.filter((element) => 
+            element.userId === user.userId
+        )
+        console.log('Users after filter', Users);
+        console.log('filterUsers', filterUsers);
+        const editedUser: User = {
+            userId: user.userId,
+            userName: userInfoEdited.userName,
+            firstName: userInfoEdited.firstName,
+            lastName: userInfoEdited.lastName,
+            email: userInfoEdited.email,
+            password: userInfoEdited.password,
+            createdDateTime: user.createdDateTime,
+        }
+        console.log('editedUser', editedUser);
+        Users.push(editedUser)
+        console.log('Users ', Users);
+        // console.log('mapUser', mapUser);
+        // let  = Users.find((element) => {
+        //     if (element.userName === userInfoEdited.userName) {
 
+        //         return element
+        //     }
+        // })
+        // if (findUser) {
+
+        // }
+        // console.log('findUser', findUser);
+
+        return new Promise<User | undefined>((resolve) => { resolve(editedUser) })
+    }
     userVerification = async (userName: string, password: string) => {
         const userVerified = Users.find((user) => {
             if (userName === user.userName && password === user.password) {
@@ -81,7 +112,7 @@ class ServerAPI {
         })
     }
     addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
-        
+
         const findUser = Users.find((user) => {
             if (comment.fromUser === user.userName) {
                 return user
@@ -102,7 +133,7 @@ class ServerAPI {
             resolve(findUser)
         })
     }
-    addCommentToComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment, commmentToComment: Comment)=>{
+    addCommentToComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment, commmentToComment: Comment) => {
         const findUser = Users.find((user) => {
             if (commmentToComment.fromUser === user.userName) {
                 return user
@@ -117,11 +148,11 @@ class ServerAPI {
             dateTimeStamp: commmentToComment.dateTimeStamp,
         }
         const findComment = Comments.find((element) => {
-            if (element === comment){
-                if (element.commentToComment === undefined){
+            if (element === comment) {
+                if (element.commentToComment === undefined) {
                     element.commentToComment = [];
                 }
-                if (element.commentToComment !== undefined){
+                if (element.commentToComment !== undefined) {
 
                     element.commentToComment.push(newCommentToComment)
                 }

@@ -4,6 +4,7 @@ export let Blogs: Blog[] = [
     {
         userName: "jj",
         blogTitle: "My cars",
+        
     },
     {
         userName: "ee",

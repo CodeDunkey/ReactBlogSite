@@ -62,8 +62,19 @@ class ServerAPI {
         return new Promise<User | undefined>((resolve) => { resolve(editedUser) })
     }
     deleteUser = async (user: User) => {
+        console.log('database.comments before splice', database.comments);
         let indexOfUser = database.users.indexOf(user)
         database.users.splice(indexOfUser, 1)
+        
+        database.comments.map((comment, index) => {
+            if (comment.fromUser === user.userName){
+                console.log('index of comment', index);
+                database.comments.splice(index, 1)
+            }
+        })
+        
+        
+        console.log('database.comments after splice', database.comments);
         return new Promise<undefined>((resolve) => { resolve(undefined) })
     }
     userVerification = async (userName: string, password: string) => {

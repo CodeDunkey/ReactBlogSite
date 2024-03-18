@@ -11,6 +11,9 @@ class ClientAPI {
     editUserInfo = async (user: User, userInfoEdited: User) => {
         return await serverAPI.editUserInfo(user, userInfoEdited);
     }
+    deleteUser = async (user: User) => {
+        return await serverAPI.deleteUser(user);
+    }
     getBlogs = async () => {
         return await serverAPI.getBlogs();
     }

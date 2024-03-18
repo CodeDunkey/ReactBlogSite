@@ -4,7 +4,7 @@ import './Button.scss'
 export enum Type {
     LOGIN = "logIn",
     SIGNUP = "signUp",
-    RED = "red",
+    DELETEUSER = "deleteUser",
     BLOG = "blog",
     POST = "post",
     COMMENT = "comment",

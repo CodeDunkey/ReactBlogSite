@@ -1,15 +1,13 @@
-
 import { User, Blog, Post, Comment } from "../../../Types/Types"
-import { Users } from "../Database/Users"
-import { Blogs } from "../Database/Blogs";
 import { resolve } from "path";
 import { rejects } from "assert";
-import { Posts } from "../Database/Posts";
-import { Comments } from "../Database/Comments";
+import { database } from "../Database/Database";
 
+
+console.log('database', database);
 class ServerAPI {
     addUser = async (userName: string, password: string, email: string, firstName: string, lastName: string) => {
-        let userCount = Users.length;
+        let userCount = database.users.length;
         const newUser: User = {
             userId: userCount + 1,
             userName: userName,
@@ -19,15 +17,21 @@ class ServerAPI {
             firstName: firstName,
             lastName: lastName,
         }
-        Users.push(newUser)
+        database.users.push(newUser)
         return new Promise<User | undefined>((resolve) => { resolve(newUser) })
     }
     editUserInfo = async (user: User, userInfoEdited: User) => {
-        let filterUsers = Users.filter((element) => 
-            element.userId === user.userId
-        )
-        console.log('Users after filter', Users);
-        console.log('filterUsers', filterUsers);
+        let indexOfUser = database.users.indexOf(user)
+
+        
+        console.log('database.users', database.users);
+        console.log('indexOfUser', indexOfUser);
+        // database.users.filter((element: User) => 
+        //     element.userId !== user.userId
+        // )
+        database.users.splice(indexOfUser, 1)
+        console.log('database.users after slice', database.users);
+        // console.log('filterUsers', filterUsers);
         const editedUser: User = {
             userId: user.userId,
             userName: userInfoEdited.userName,
@@ -37,11 +41,14 @@ class ServerAPI {
             password: userInfoEdited.password,
             createdDateTime: user.createdDateTime,
         }
+        // console.log('filterUsers',filterUsers);
         console.log('editedUser', editedUser);
-        Users.push(editedUser)
-        console.log('Users ', Users);
+        database.users.push(editedUser)
+        // database.users = filterUsers
+        console.log('database.users after push', database.users);
+        
         // console.log('mapUser', mapUser);
-        // let  = Users.find((element) => {
+        // let  = database.users.find((element) => {
         //     if (element.userName === userInfoEdited.userName) {
 
         //         return element
@@ -54,8 +61,13 @@ class ServerAPI {
 
         return new Promise<User | undefined>((resolve) => { resolve(editedUser) })
     }
+    deleteUser = async (user: User) => {
+        let indexOfUser = database.users.indexOf(user)
+        database.users.splice(indexOfUser, 1)
+        return new Promise<undefined>((resolve) => { resolve(undefined) })
+    }
     userVerification = async (userName: string, password: string) => {
-        const userVerified = Users.find((user) => {
+        const userVerified = database.users.find((user: User) => {
             if (userName === user.userName && password === user.password) {
                 return user
             }
@@ -64,20 +76,20 @@ class ServerAPI {
     }
 
     getBlogs = async () => {
-        // const userBlogs = Users.flatMap((user) => {
+        // const userBlogs = database.users.flatMap((user) => {
         //     return user.blog || []
         // })
 
-        return new Promise<Blog[]>((resolve, reject) => { resolve(Blogs) })
+        return new Promise<Blog[]>((resolve, reject) => { resolve(database.blogs) })
     }
     getPosts = async () => {
-        return new Promise<Post[]>((resolve, rejects) => { resolve(Posts) })
+        return new Promise<Post[]>((resolve, rejects) => { resolve(database.posts) })
     }
     getComments = async () => {
-        return new Promise<Comment[]>((resolve, rejects) => { resolve(Comments) })
+        return new Promise<Comment[]>((resolve, rejects) => { resolve(database.comments) })
     }
     addNewBlog = async (blog: Blog, userName: string) => {
-        const findUser = Users.find((user) => {
+        const findUser = database.users.find((user: User) => {
             if (userName === user.userName) {
                 return user
             }
@@ -86,14 +98,14 @@ class ServerAPI {
             userName: userName,
             blogTitle: blog.blogTitle,
         }
-        Blogs.push(newBlog)
+        database.blogs.push(newBlog)
 
         return new Promise<User | undefined>((resolve, reject) => {
             resolve(findUser)
         })
     }
     addNewPost = async (blogTitle: string, userName: string, post: Post) => {
-        const findUser = Users.find((user) => {
+        const findUser = database.users.find((user: User) => {
             if (userName === user.userName) {
                 return user
             }
@@ -105,7 +117,7 @@ class ServerAPI {
             text: post.text,
             dateTimeStamp: post.dateTimeStamp,
         }
-        Posts.push(newPost)
+        database.posts.push(newPost)
 
         return new Promise<User | undefined>((resolve, reject) => {
             resolve(findUser)
@@ -113,7 +125,7 @@ class ServerAPI {
     }
     addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
 
-        const findUser = Users.find((user) => {
+        const findUser = database.users.find((user: User) => {
             if (comment.fromUser === user.userName) {
                 return user
             }
@@ -127,14 +139,14 @@ class ServerAPI {
             comment: comment.comment,
             dateTimeStamp: comment.dateTimeStamp,
         }
-        Comments.push(newComment)
+        database.comments.push(newComment)
 
         return new Promise<User | undefined>((resolve, reject) => {
             resolve(findUser)
         })
     }
     addCommentToComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment, commmentToComment: Comment) => {
-        const findUser = Users.find((user) => {
+        const findUser = database.users.find((user: User) => {
             if (commmentToComment.fromUser === user.userName) {
                 return user
             }
@@ -147,7 +159,7 @@ class ServerAPI {
             comment: commmentToComment.comment,
             dateTimeStamp: commmentToComment.dateTimeStamp,
         }
-        const findComment = Comments.find((element) => {
+        const findComment = database.comments.find((element) => {
             if (element === comment) {
                 if (element.commentToComment === undefined) {
                     element.commentToComment = [];

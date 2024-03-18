@@ -1,11 +1,13 @@
 import './UserSidePanel.scss'
 import { useUserContext } from '../../../../Hooks/Context/useContext/useUserContext'
 import { ChangeEvent, useRef, useState } from 'react'
-import { useEditUserInfo } from '../../../../Hooks/Context/useEditUserInfo';
+import { useEditUserInfo } from '../../../../Hooks/useEditUserInfo';
+import { useDeleteUser } from '../../../../Hooks/useDeleteUser';
 import { Button, Type } from '../../../Button/Button';
 import { User } from '../../../../Types/Types';
 export const UserSidePanel = () => {
     const { editUserInfo } = useEditUserInfo();
+    const { deleteUser } = useDeleteUser();
     const { user, setUser } = useUserContext();
     const [openMenu, setOpenMenu] = useState<boolean>(false);
     const [editUserInfomation, setEditUserInfo] = useState<User | undefined>(undefined)
@@ -20,15 +22,6 @@ export const UserSidePanel = () => {
             lastName: user.lastName,
             userName: user.userName,
         })
-        // editUserInfo.current = {
-        //     userId: user.userId,
-        //     createdDateTime: user.createdDateTime,
-        //     email: user.email,
-        //     password: user.password,
-        //     firstName: user.firstName,
-        //     lastName: user.lastName,
-        //     userName: user.userName,
-        // }
     }
     // let textEmail = useRef<string>();
     // textEmail.current = user?.email;
@@ -70,9 +63,17 @@ export const UserSidePanel = () => {
             userInformationEdited = await editUserInfo({user: user, userInfoEdited: editUserInfomation})
             if (userInformationEdited !== undefined){
                 console.log('userInformationEdited', userInformationEdited);
-                // setUser({...userInformationEdited})
+                setUser({...userInformationEdited})
             }
         }
+        setOpenMenu(!openMenu)
+    }
+    const deleteAccount = async () => {
+        if (user !== undefined){
+            let deleteTheUser = await deleteUser({user: user})
+            setUser(deleteTheUser)
+        }
+
         setOpenMenu(!openMenu)
     }
     // console.log('editUserInfo', editUserInfo.current);
@@ -93,7 +94,8 @@ export const UserSidePanel = () => {
                     <input id="email" value={editUserInfomation?.email} onChange={textinputEmail} placeholder={user.email} />
                     <label htmlFor='password'>password</label>
                     <input id="password" value={editUserInfomation?.password} onChange={textInputPassword} placeholder={user.password} />
-                    {<Button buttonType={Type.SAVE} text='Save changes' onClick={saveChanges} />}
+                    <Button buttonType={Type.SAVE} text='Save changes' onClick={saveChanges} />
+                    <Button buttonType={Type.DELETEUSER} text="Delete your account" onClick={deleteAccount}/>
                 </div>}
                 <div id="closeBurgerMenu" className="closeBurgerMenu" onClick={closeBurgerMenu}>X</div>
             </div>}

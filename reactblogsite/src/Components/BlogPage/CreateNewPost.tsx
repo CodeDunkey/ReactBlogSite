@@ -7,7 +7,7 @@ import { Button, Type } from '../Button/Button';
 import { Post } from '../../Types/Types';
 import './CreateNewPost.scss'
 
-export const CreateNewPost = ({ blogTitle, userName }: { blogTitle: string, userName: string }) => {
+export const CreateNewPost = ({ blogTitle, blogIdNumber, userName }: { blogTitle: string, blogIdNumber: number, userName: string }) => {
 
     const [newPost, setNewPost] = useState<boolean>(false);
     const { addNewPost } = useAddNewPost()
@@ -29,12 +29,14 @@ export const CreateNewPost = ({ blogTitle, userName }: { blogTitle: string, user
             let post: Post = {
                 userName: userName,
                 blogTitle: blogTitle,
+                blogIdNumber: blogIdNumber,
                 postTitle: postTitle.current,
+                postIdNumber: Math.random(),
                 text: text.current,
                 dateTimeStamp: new Date().toLocaleString()
             }
 
-            userAddPostToBlog = await addNewPost({ blogTitle: blogTitle, userName: userName, post: post })
+            userAddPostToBlog = await addNewPost({ blogTitle: blogTitle, blogIdNumber: blogIdNumber, userName: userName, post: post })
 
             if (userAddPostToBlog !== undefined) {
                 

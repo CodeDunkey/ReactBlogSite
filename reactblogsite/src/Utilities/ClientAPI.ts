@@ -27,8 +27,8 @@ class ClientAPI {
     addNewBlog = async (blog: Blog, userName: string) => {
          return await serverAPI.addNewBlog(blog, userName)
     }
-    addNewPost = async (blogTitle: string, userName: string, post: Post) => {
-         return await serverAPI.addNewPost(blogTitle, userName, post)
+    addNewPost = async (blogTitle: string, blogIdNumber: number, userName: string, post: Post) => {
+         return await serverAPI.addNewPost(blogTitle, blogIdNumber, userName, post)
     }
     addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
          return await serverAPI.addNewComment(blogTitle, postTitle, userName, comment)

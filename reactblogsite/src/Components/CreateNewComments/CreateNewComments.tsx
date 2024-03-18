@@ -9,9 +9,7 @@ import { useUserContext } from '../../Hooks/Context/useContext/useUserContext'
 import { useCommentContext } from '../../Hooks/Context/useContext/useCommentContext'
 
 export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { postTitle: string, blogTitle: string, blogUserName: string }) => {
-    console.log('postTitle in ', postTitle);
-    console.log('blogTitle', blogTitle);
-    console.log('blogUserName', blogUserName);
+    
     const [newComment, setNewComment] = useState<boolean>(false); 
     const { setKeyDown } = useLogInSignUp()
     const { user, setUser } = useUserContext()
@@ -42,7 +40,7 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { post
             addCommentToPost = await addNewComment({ blogTitle: blogTitle, postTitle: postTitle, blogUserName: blogUserName, comment: comment })
 
             if (addCommentToPost !== undefined) {
-                console.log("addCommentToPost in createComment.tsx", addCommentToPost)
+                
                 setUser({ ...addCommentToPost })
             }
         }

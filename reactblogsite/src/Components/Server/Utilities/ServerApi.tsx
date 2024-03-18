@@ -22,16 +22,7 @@ class ServerAPI {
     }
     editUserInfo = async (user: User, userInfoEdited: User) => {
         let indexOfUser = database.users.indexOf(user)
-
-        
-        console.log('database.users', database.users);
-        console.log('indexOfUser', indexOfUser);
-        // database.users.filter((element: User) => 
-        //     element.userId !== user.userId
-        // )
         database.users.splice(indexOfUser, 1)
-        console.log('database.users after slice', database.users);
-        // console.log('filterUsers', filterUsers);
         const editedUser: User = {
             userId: user.userId,
             userName: userInfoEdited.userName,
@@ -41,40 +32,20 @@ class ServerAPI {
             password: userInfoEdited.password,
             createdDateTime: user.createdDateTime,
         }
-        // console.log('filterUsers',filterUsers);
-        console.log('editedUser', editedUser);
         database.users.push(editedUser)
-        // database.users = filterUsers
-        console.log('database.users after push', database.users);
-        
-        // console.log('mapUser', mapUser);
-        // let  = database.users.find((element) => {
-        //     if (element.userName === userInfoEdited.userName) {
-
-        //         return element
-        //     }
-        // })
-        // if (findUser) {
-
-        // }
-        // console.log('findUser', findUser);
-
         return new Promise<User | undefined>((resolve) => { resolve(editedUser) })
     }
     deleteUser = async (user: User) => {
-        console.log('database.comments before splice', database.comments);
-        let indexOfUser = database.users.indexOf(user)
-        database.users.splice(indexOfUser, 1)
-        
-        database.comments.map((comment, index) => {
-            if (comment.fromUser === user.userName){
-                console.log('index of comment', index);
-                database.comments.splice(index, 1)
-            }
-        })
-        
-        
-        console.log('database.comments after splice', database.comments);
+
+        let filteretCommentList = database.comments.filter((comment) => comment.fromUser !== user.userName && comment.userName !== user.userName)
+        database.comments = filteretCommentList
+        let filteretPostsList = database.posts.filter((post) => post.userName !== user.userName)
+        database.posts = filteretPostsList;
+        let filteretBlogsList = database.blogs.filter((blog) => blog.userName !== user.userName)
+        database.blogs = filteretBlogsList
+        let filteretUsersList = database.users.filter((users) => users.userName !== user.userName)
+        database.users = filteretUsersList
+
         return new Promise<undefined>((resolve) => { resolve(undefined) })
     }
     userVerification = async (userName: string, password: string) => {
@@ -87,10 +58,6 @@ class ServerAPI {
     }
 
     getBlogs = async () => {
-        // const userBlogs = database.users.flatMap((user) => {
-        //     return user.blog || []
-        // })
-
         return new Promise<Blog[]>((resolve, reject) => { resolve(database.blogs) })
     }
     getPosts = async () => {
@@ -108,6 +75,7 @@ class ServerAPI {
         const newBlog: Blog = {
             userName: userName,
             blogTitle: blog.blogTitle,
+            blogIdNumber: Math.random(),
         }
         database.blogs.push(newBlog)
 
@@ -115,7 +83,7 @@ class ServerAPI {
             resolve(findUser)
         })
     }
-    addNewPost = async (blogTitle: string, userName: string, post: Post) => {
+    addNewPost = async (blogTitle: string, blogIdNumber: number, userName: string, post: Post) => {
         const findUser = database.users.find((user: User) => {
             if (userName === user.userName) {
                 return user
@@ -124,7 +92,9 @@ class ServerAPI {
         const newPost: Post = {
             userName: userName,
             blogTitle: blogTitle,
+            blogIdNumber: blogIdNumber,
             postTitle: post.postTitle,
+            postIdNumber: post.postIdNumber,
             text: post.text,
             dateTimeStamp: post.dateTimeStamp,
         }
@@ -145,7 +115,9 @@ class ServerAPI {
         const newComment: Comment = {
             userName: userName,
             blogTitle: blogTitle,
+            blogIdNumber: number,
             postTitle: postTitle,
+            postIdNumber: number,
             fromUser: comment.fromUser,
             comment: comment.comment,
             dateTimeStamp: comment.dateTimeStamp,

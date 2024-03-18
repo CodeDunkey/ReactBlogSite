@@ -1,24 +1,28 @@
 export interface Comment {
     userName: string,
     blogTitle: string,
+    blogIdNumber: number, //
     postTitle: string,
-    fromUser: string,
-    
+    postIdNumber: number, //
     comment: string,
+    commentIdNumber: number, // 
+    fromUser: string,
     dateTimeStamp: string,
     commentToComment?: Comment[],
 }
 export interface Post {
     userName: string,
     blogTitle: string,
-    dateTimeStamp: string
+    blogIdNumber: number, //
     postTitle: string,
+    postIdNumber: number, //
+    dateTimeStamp: string,
     text: string,
 }
 export interface Blog {
     userName: string,
     blogTitle: string,
-    post?: Post[],
+    blogIdNumber: number, //
 }
 export interface User {
     userId: number,
@@ -27,5 +31,5 @@ export interface User {
     password: string,
     firstName: string,
     lastName: string,
-    userName: string,
+    userName: string, //
 }

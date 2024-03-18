@@ -1,11 +1,9 @@
 import './PostPage.scss'
-import { Comment } from '../../Types/Types'
 import { usePosts } from '../../Hooks/usePosts'
-import { useComments } from '../../Hooks/useComments'
 import { useUserContext } from '../../Hooks/Context/useContext/useUserContext'
 import { CreateNewComments } from '../CreateNewComments/CreateNewComments'
 import { CommentSection } from '../Comments/CommentSection'
-import { useState } from 'react'
+
 export const PostPage = ({ postTitle, blogTitle, blogUserName }: { postTitle: string, blogTitle: string, blogUserName: string }) => {
     
     const { posts } = usePosts();

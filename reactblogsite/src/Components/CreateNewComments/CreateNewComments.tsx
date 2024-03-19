@@ -3,12 +3,12 @@ import './CreateNewComments.scss'
 import ReactModal from 'react-modal'
 import { Button, Type } from '../Button/Button'
 import { useLogInSignUp } from '../../Hooks/Context/useContext/useLogInSignUpContext'
-import { Comment } from '../../Types/Types'
+import { Blog, Comment, Post } from '../../Types/Types'
 import { useAddNewComment } from '../../Hooks/useAddNewComment'
 import { useUserContext } from '../../Hooks/Context/useContext/useUserContext'
 import { useCommentContext } from '../../Hooks/Context/useContext/useCommentContext'
 
-export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { postTitle: string, blogTitle: string, blogUserName: string }) => {
+export const CreateNewComments = ({ post, blog }: { post: Post, blog: Blog }) => {
     
     const [newComment, setNewComment] = useState<boolean>(false); 
     const { setKeyDown } = useLogInSignUp()
@@ -29,15 +29,18 @@ export const CreateNewComments = ({ postTitle, blogTitle, blogUserName }: { post
         if (commentText.current !== undefined && user?.userName !== undefined) {
 
             let comment: Comment = {
-                userName: blogUserName,
-                blogTitle: blogTitle,
-                postTitle: postTitle,
+                userName: blog.userName,
+                blogTitle: blog.blogTitle,
+                blogIdNumber: blog.blogIdNumber,
+                postTitle: post.postTitle,
+                postIdNumber: post.postIdNumber,
                 fromUser: user.userName,
                 comment: commentText.current,
+                commentIdNumber: Math.random(),
                 dateTimeStamp: new Date().toLocaleString(),
             }
 
-            addCommentToPost = await addNewComment({ blogTitle: blogTitle, postTitle: postTitle, blogUserName: blogUserName, comment: comment })
+            addCommentToPost = await addNewComment({ comment: comment })
 
             if (addCommentToPost !== undefined) {
                 

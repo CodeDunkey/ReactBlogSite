@@ -9,6 +9,7 @@ export let Comments: Comment[] = [
         postIdNumber: 6,
         fromUser: "jj",
         comment: "third comment to a post",
+        commentIdNumber: 1,
         dateTimeStamp: "2/7/2024, 4:26:30 PM",
     },
     {
@@ -19,6 +20,7 @@ export let Comments: Comment[] = [
         postIdNumber: 6,
         fromUser: "ee",
         comment: "first comment to a post",
+        commentIdNumber: 2,
         dateTimeStamp: "3/7/2024, 9:26:30 AM",
     },
     {
@@ -29,6 +31,7 @@ export let Comments: Comment[] = [
         postIdNumber: 6,
         fromUser: "ee",
         comment: "Second comment to a post",
+        commentIdNumber: 3,
         dateTimeStamp: "3/7/2020, 3:26:30 PM",
     },
     {
@@ -39,6 +42,7 @@ export let Comments: Comment[] = [
         postIdNumber: 2,
         fromUser: "ww",
         comment: "First comment to a post",
+        commentIdNumber: 4,
         dateTimeStamp: "9/2/2014, 2:15:52 PM",
     },
     {
@@ -49,6 +53,7 @@ export let Comments: Comment[] = [
         postIdNumber: 3,
         fromUser: "ww",
         comment: "bla bla, bla bla, bla bla, bla bla comment to Second post",
+        commentIdNumber: 5,
         dateTimeStamp: "9/2/2016, 2:15:52 PM",
     },
     {
@@ -59,6 +64,7 @@ export let Comments: Comment[] = [
         postIdNumber: 1,
         fromUser: "ww",
         comment: "bla bla comment to First Post",
+        commentIdNumber: 6,
         dateTimeStamp: "9/2/2015, 2:15:52 PM",
     },
 ]

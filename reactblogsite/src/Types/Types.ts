@@ -1,11 +1,11 @@
 export interface Comment {
     userName: string,
     blogTitle: string,
-    blogIdNumber: number, //
+    blogIdNumber: number, // #1
     postTitle: string,
-    postIdNumber: number, //
+    postIdNumber: number, // #2
     comment: string,
-    commentIdNumber: number, // 
+    commentIdNumber: number, // #3 
     fromUser: string,
     dateTimeStamp: string,
     commentToComment?: Comment[],
@@ -13,16 +13,16 @@ export interface Comment {
 export interface Post {
     userName: string,
     blogTitle: string,
-    blogIdNumber: number, //
+    blogIdNumber: number, // #1
     postTitle: string,
-    postIdNumber: number, //
+    postIdNumber: number, // #2
     dateTimeStamp: string,
     text: string,
 }
 export interface Blog {
     userName: string,
     blogTitle: string,
-    blogIdNumber: number, //
+    blogIdNumber: number, // #1
 }
 export interface User {
     userId: number,

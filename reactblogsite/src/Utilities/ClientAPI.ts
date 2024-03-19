@@ -23,19 +23,22 @@ class ClientAPI {
     getComments = async () => {
         return await serverAPI.getComments();
     }
+    addNewBlog = async (blog: Blog) => {
+         return await serverAPI.addNewBlog(blog)
+    }
+    editBlog = async (blog: Blog) => {
+        return await serverAPI.editBlog(blog)
+    }
+    addNewPost = async (blog: Blog, post: Post) => {
+         return await serverAPI.addNewPost(blog, post)
+    }
+    addNewComment = async ( comment: Comment) => {
+         return await serverAPI.addNewComment( comment)
+    }
+    addCommentToComment = async (blog: Blog, post: Post, comment: Comment, commentToComment: Comment) => {
+        return await serverAPI.addCommentToComment(blog, post, comment, commentToComment)
+    }
 
-    addNewBlog = async (blog: Blog, userName: string) => {
-         return await serverAPI.addNewBlog(blog, userName)
-    }
-    addNewPost = async (blogTitle: string, blogIdNumber: number, userName: string, post: Post) => {
-         return await serverAPI.addNewPost(blogTitle, blogIdNumber, userName, post)
-    }
-    addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
-         return await serverAPI.addNewComment(blogTitle, postTitle, userName, comment)
-    }
-    addCommentToComment = async (blogTitle: string, postTitle: string, blogUserName: string, comment: Comment, commentToComment: Comment) => {
-        return await serverAPI.addCommentToComment(blogTitle, postTitle, blogUserName, comment, commentToComment)
-    }
 }
 
 export const clientApi = new ClientAPI();

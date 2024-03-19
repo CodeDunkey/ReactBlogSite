@@ -10,6 +10,7 @@ export enum Type {
     COMMENT = "comment",
     SAVE = "save",
     EXIT = "exit",
+    EDIT = "Edit",
 }
 export interface ButtonProps {
     onClick: () => void;

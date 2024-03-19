@@ -3,7 +3,8 @@ import { useComments } from "../../Hooks/useComments";
 import { CreateNewComments } from "../CreateNewComments/CreateNewComments";
 import { useUserContext } from "../../Hooks/Context/useContext/useUserContext";
 import { CommentToComment } from "../CreateNewComments/CommentToComment/CommentToComment";
-export const CommentSection = ({ postTitle, blogTitle, blogUserName }: { postTitle: string, blogTitle: string, blogUserName: string }) => {
+import { Blog, Post } from '../../Types/Types';
+export const CommentSection = ({ post, blog }: { post: Post, blog: Blog }) => {
     const { user } = useUserContext();
     const { comments } = useComments();
     console.log('comments', comments);
@@ -25,7 +26,7 @@ export const CommentSection = ({ postTitle, blogTitle, blogUserName }: { postTit
 
     let postComments = commentsCopy.map((comment) => {
         console.log('comment in postComments', comment);
-        if (comment.userName === blogUserName && comment.postTitle === postTitle && comment.blogTitle === blogTitle) {
+        if (comment.userName === blog.userName && comment.postTitle === post.postTitle && comment.blogIdNumber === blog.blogIdNumber) {
             const showCommentToComment = comment.commentToComment?.map((element) => {
                 return (
                     <div className='comment'>
@@ -43,7 +44,7 @@ export const CommentSection = ({ postTitle, blogTitle, blogUserName }: { postTit
                     <br></br>
                     <div>{comment.comment}</div>
                     <div className='commentToComment'>{showCommentToComment}</div>
-                    <div className='commentButtonPlacement'><CommentToComment blogTitle={blogTitle} postTitle={postTitle} blogUserName={blogUserName} comment={comment} /></div>
+                    <div className='commentButtonPlacement'><CommentToComment blog={blog} post={post} comment={comment} /></div>
                 </div>
             )
         }

@@ -15,7 +15,7 @@ export const UserLoggedInPosts = () => {
             console.log(blog)
 
             const userPosts = posts.map((post) => {
-                if (user.userName === post.userName && blog.blogTitle === post.blogTitle) {
+                if ( blog.blogIdNumber === post.blogIdNumber) {
                     return (
                         <>
                             <h3>{post.postTitle}</h3>
@@ -25,7 +25,7 @@ export const UserLoggedInPosts = () => {
                 }
             })
             return (
-                <Link to={`/Blog/(${blog.blogTitle})`} className="blogLinkStyle">
+                <Link to={`/Blog/(${blog.blogIdNumber})`} className="blogLinkStyle">
                     <div className="blogs">
                         <h1>{blog.blogTitle}</h1>
                     </div>

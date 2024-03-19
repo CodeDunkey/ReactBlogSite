@@ -4,10 +4,10 @@ import { useUserContext } from '../../Hooks/Context/useContext/useUserContext';
 import { useLogInSignUp } from '../../Hooks/Context/useContext/useLogInSignUpContext';
 import { useAddNewPost } from '../../Hooks/useAddNewPost';
 import { Button, Type } from '../Button/Button';
-import { Post } from '../../Types/Types';
+import { Blog, Post } from '../../Types/Types';
 import './CreateNewPost.scss'
 
-export const CreateNewPost = ({ blogTitle, blogIdNumber, userName }: { blogTitle: string, blogIdNumber: number, userName: string }) => {
+export const CreateNewPost = ({ blog }: { blog: Blog }) => {
 
     const [newPost, setNewPost] = useState<boolean>(false);
     const { addNewPost } = useAddNewPost()
@@ -27,16 +27,16 @@ export const CreateNewPost = ({ blogTitle, blogIdNumber, userName }: { blogTitle
         if (postTitle.current !== undefined && text.current !== undefined) {
 
             let post: Post = {
-                userName: userName,
-                blogTitle: blogTitle,
-                blogIdNumber: blogIdNumber,
+                userName: blog.userName,
+                blogTitle: blog.blogTitle,
+                blogIdNumber: blog.blogIdNumber,
                 postTitle: postTitle.current,
                 postIdNumber: Math.random(),
                 text: text.current,
                 dateTimeStamp: new Date().toLocaleString()
             }
 
-            userAddPostToBlog = await addNewPost({ blogTitle: blogTitle, blogIdNumber: blogIdNumber, userName: userName, post: post })
+            userAddPostToBlog = await addNewPost({ blog: blog, post: post })
 
             if (userAddPostToBlog !== undefined) {
                 
@@ -71,7 +71,6 @@ export const CreateNewPost = ({ blogTitle, blogIdNumber, userName }: { blogTitle
                 <input id="post title" onChange={textPostTitle} onKeyDown={keyPress} placeholder='Post title'></input>
                 <label htmlFor="post text" >Post title:</label>
                 <textarea id="post text" onChange={textPostText} onKeyDown={()=>keyPress} placeholder='Post text'/>
-                {/* <input className='postTextArea' id="post text" onChange={textPostText} onKeyDown={keyPress} placeholder='Post text'></input> */}
                 {(postTitle.current) && <Button buttonType={Type.SAVE} text="SAVE" onClick={newPostAdd}></Button>}
             </ReactModal>
         </div>

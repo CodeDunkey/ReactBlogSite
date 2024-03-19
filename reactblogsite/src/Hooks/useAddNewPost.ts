@@ -1,10 +1,10 @@
-import { Post } from "../Types/Types";
+import { Blog, Post } from "../Types/Types";
 import { clientApi } from "../Utilities/ClientAPI";
 
 export const useAddNewPost = () => {
 
-    const addNewPost = async ({blogTitle, blogIdNumber, userName, post}: {blogTitle: string, blogIdNumber: number, userName: string, post: Post}) => {
-        return await clientApi.addNewPost(blogTitle, blogIdNumber,userName, post)
+    const addNewPost = async ({blog, post}: {blog: Blog, post: Post}) => {
+        return await clientApi.addNewPost(blog, post)
     }
     return { addNewPost }
 }

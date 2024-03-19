@@ -82,7 +82,7 @@ export const PostCarousel = () => {
         if (index + 1 === blogAmound) {
             // console.log("postCarousel index + 1", index + 1, "blogAmound", blogAmound)
             const blogPosts = posts?.map((post) => {
-                if (blog.blogTitle === post.blogTitle && blog.userName === post.userName) {
+                if (blog.blogIdNumber === post.blogIdNumber) {
                     return (
                         <div>
                             <h2>{post.postTitle}</h2>
@@ -93,7 +93,7 @@ export const PostCarousel = () => {
             })
             return (
                 
-                    <Link to={`/Blog/(${blog.blogTitle})`} className="blogLinkStyle">
+                    <Link to={`/Blog/(${blog.blogIdNumber})`} className="blogLinkStyle">
                         <div className="post1">
                             <div className="blogFrom"><h1>Blog from {blog.userName}</h1></div>
                             <div className="blogTitle"><h2>{blog.blogTitle}</h2></div>
@@ -120,7 +120,7 @@ export const PostCarousel = () => {
             })
             return (
                 
-                    <Link to={`/Blog/(${blog.blogTitle})`} className="blogLinkStyle">
+                    <Link to={`/Blog/(${blog.blogIdNumber})`} className="blogLinkStyle">
                         <div className="post2">
                             <div className="blogFrom"><h1>Blog from {blog.userName}</h1></div>
                             <div className="blogTitle"><h2>{blog.blogTitle}</h2></div>

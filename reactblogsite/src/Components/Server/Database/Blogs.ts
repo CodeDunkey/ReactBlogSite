@@ -13,12 +13,12 @@ export let Blogs: Blog[] = [
     },
     {
         userName: "ww",
-        blogTitle: "BlogTitle: First Blog",
+        blogTitle: "First Blog",
         blogIdNumber: 3,
     },
     {
         userName: "ww",
-        blogTitle: "BlogTitle: Second blog",
+        blogTitle: "Second blog",
         blogIdNumber: 4,
     },
 ]

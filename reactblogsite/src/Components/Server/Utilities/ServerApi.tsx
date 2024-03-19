@@ -37,6 +37,10 @@ class ServerAPI {
     }
     deleteUser = async (user: User) => {
 
+        let filteretCommentToComment = database.comments.map((element) => {
+            let filtering =  element.commentToComment?.filter((comment)=> comment.fromUser !== user.userName && comment.userName !== user.userName)
+            element.commentToComment = filtering
+        })
         let filteretCommentList = database.comments.filter((comment) => comment.fromUser !== user.userName && comment.userName !== user.userName)
         database.comments = filteretCommentList
         let filteretPostsList = database.posts.filter((post) => post.userName !== user.userName)
@@ -56,7 +60,6 @@ class ServerAPI {
         })
         return new Promise<User | undefined>((resolve, reject) => { resolve(userVerified) })
     }
-
     getBlogs = async () => {
         return new Promise<Blog[]>((resolve, reject) => { resolve(database.blogs) })
     }
@@ -66,33 +69,50 @@ class ServerAPI {
     getComments = async () => {
         return new Promise<Comment[]>((resolve, rejects) => { resolve(database.comments) })
     }
-    addNewBlog = async (blog: Blog, userName: string) => {
+    addNewBlog = async (blog: Blog) => {
         const findUser = database.users.find((user: User) => {
-            if (userName === user.userName) {
+            if (blog.userName === user.userName) {
                 return user
             }
         })
         const newBlog: Blog = {
-            userName: userName,
+            userName: blog.userName,
             blogTitle: blog.blogTitle,
             blogIdNumber: Math.random(),
         }
         database.blogs.push(newBlog)
 
-        return new Promise<User | undefined>((resolve, reject) => {
-            resolve(findUser)
-        })
+        return new Promise<User | undefined>((resolve, reject) => { resolve(findUser) })
     }
-    addNewPost = async (blogTitle: string, blogIdNumber: number, userName: string, post: Post) => {
+    editBlog = async (blog: Blog) => {
         const findUser = database.users.find((user: User) => {
-            if (userName === user.userName) {
+            if (blog.userName === user.userName) {
+                return user
+            }
+        })
+
+        let filteretBlogsList = database.blogs.filter((element) => element.blogIdNumber !== blog.blogIdNumber );
+        database.blogs = filteretBlogsList;
+
+        const editedBlog: Blog = {
+            userName: blog.userName,
+            blogIdNumber: blog.blogIdNumber,
+            blogTitle: blog.blogTitle,
+        }
+        database.blogs.push(editedBlog)
+
+        return new Promise<User | undefined>((resolve, reject) => { resolve(findUser) })
+    }
+    addNewPost = async (blog: Blog, post: Post) => {
+        const findUser = database.users.find((user: User) => {
+            if (blog.userName === user.userName) {
                 return user
             }
         })
         const newPost: Post = {
-            userName: userName,
-            blogTitle: blogTitle,
-            blogIdNumber: blogIdNumber,
+            userName: blog.userName,
+            blogTitle: blog.blogTitle,
+            blogIdNumber: blog.blogIdNumber,
             postTitle: post.postTitle,
             postIdNumber: post.postIdNumber,
             text: post.text,
@@ -104,7 +124,7 @@ class ServerAPI {
             resolve(findUser)
         })
     }
-    addNewComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment) => {
+    addNewComment = async (comment: Comment) => {
 
         const findUser = database.users.find((user: User) => {
             if (comment.fromUser === user.userName) {
@@ -113,13 +133,14 @@ class ServerAPI {
         })
         // console.log('comment in serverApi', comment);
         const newComment: Comment = {
-            userName: userName,
-            blogTitle: blogTitle,
-            blogIdNumber: number,
-            postTitle: postTitle,
-            postIdNumber: number,
+            userName: comment.userName,
+            blogTitle: comment.blogTitle,
+            blogIdNumber: comment.blogIdNumber,
+            postTitle: comment.postTitle,
+            postIdNumber: comment.postIdNumber,
             fromUser: comment.fromUser,
             comment: comment.comment,
+            commentIdNumber: comment.commentIdNumber,
             dateTimeStamp: comment.dateTimeStamp,
         }
         database.comments.push(newComment)
@@ -128,18 +149,21 @@ class ServerAPI {
             resolve(findUser)
         })
     }
-    addCommentToComment = async (blogTitle: string, postTitle: string, userName: string, comment: Comment, commmentToComment: Comment) => {
+    addCommentToComment = async (blog: Blog, post: Post, comment: Comment, commmentToComment: Comment) => {
         const findUser = database.users.find((user: User) => {
             if (commmentToComment.fromUser === user.userName) {
                 return user
             }
         })
         const newCommentToComment: Comment = {
-            userName: userName,
-            blogTitle: blogTitle,
-            postTitle: postTitle,
+            userName: blog.userName,
+            blogTitle: blog.blogTitle,
+            blogIdNumber: blog.blogIdNumber,
+            postTitle: post.postTitle,
+            postIdNumber: post.postIdNumber,
             fromUser: commmentToComment.fromUser,
             comment: commmentToComment.comment,
+            commentIdNumber: commmentToComment.commentIdNumber,
             dateTimeStamp: commmentToComment.dateTimeStamp,
         }
         const findComment = database.comments.find((element) => {

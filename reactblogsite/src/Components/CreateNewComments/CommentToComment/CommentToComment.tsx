@@ -3,9 +3,9 @@ import { Button, Type } from "../../Button/Button"
 import { useAddCommentToComment } from "../../../Hooks/useAddCommentToComment"
 import { useUserContext } from "../../../Hooks/Context/useContext/useUserContext";
 import { useRef, KeyboardEvent, ChangeEvent, useState } from "react";
-import { Comment } from "../../../Types/Types";
+import { Blog, Comment, Post } from "../../../Types/Types";
 import { useLogInSignUp } from "../../../Hooks/Context/useContext/useLogInSignUpContext";
-export const CommentToComment = ({ postTitle, blogTitle, blogUserName, comment }: { postTitle: string, blogTitle: string, blogUserName: string, comment: Comment }) => {
+export const CommentToComment = ({ blog, post, comment }: { blog: Blog, post: Post, comment: Comment }) => {
 
     const [ newComment, setNewComment ] = useState<boolean>(false)
     const { user, setUser } = useUserContext();
@@ -21,14 +21,17 @@ export const CommentToComment = ({ postTitle, blogTitle, blogUserName, comment }
         if (commentText.current !== undefined && user?.userName !== undefined) {
 
             let commentToComment: Comment = {
-                userName: blogUserName,
-                blogTitle: blogTitle,
-                postTitle: postTitle,
+                userName: blog.userName,
+                blogTitle: blog.blogTitle,
+                blogIdNumber: blog.blogIdNumber,
+                postTitle: post.postTitle,
+                postIdNumber: post.postIdNumber,
                 fromUser: user.userName,
                 comment: commentText.current,
+                commentIdNumber: Math.random(),
                 dateTimeStamp: new Date().toLocaleString(),
             }
-            addNewCommentToComment = await addCommentToComment({ blogTitle: blogTitle, postTitle: postTitle, blogUserName: blogUserName, comment: comment, commentToComment: commentToComment });
+            addNewCommentToComment = await addCommentToComment({ blog: blog, post: post, comment: comment, commentToComment: commentToComment });
             
             if (addNewCommentToComment !== undefined){
                 setUser({ ...addNewCommentToComment })
